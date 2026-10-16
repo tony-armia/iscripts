@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Header from '../layout/Header';
 import HeroSection from './HeroSection';
-import ProductExplorer from './ProductExplorer';
 import PlatformExplorer from './PlatformExplorer';
 import WhyIScripts from './WhyIScripts';
 import CustomDevelopment from './CustomDevelopment';
@@ -26,10 +25,7 @@ export default function HomeClientWrapper() {
         {/* Section 02: New Hero - A Major Visual Statement */}
         <HeroSection onOpenContact={handleOpenContact} />
 
-        {/* Section 03: Discover the Platforms - Interactive Product Explorer */}
-        <ProductExplorer />
-
-        {/* Section 04: Explore What You Can Build - Business Model Directory */}
+        {/* Section 03: Explore What You Can Build - Interactive Business Model Directory */}
         <PlatformExplorer />
 
         {/* Section 05: Made to Become Yours - Architecture & Feature Storytelling */}

@@ -238,6 +238,36 @@ export default function HeroSlider({ onOpenContact }: HeroSliderProps) {
             onNext={nextSlide}
             onTogglePlay={() => setIsPlaying((p) => !p)}
           />
+
+          {/* Minimal Full Catalog Link Strip */}
+          <div className={styles.heroCatalogStrip}>
+            <span className={styles.heroCatalogNote}>
+              Looking for online print logic, barter networks, or custom store builders?
+            </span>
+            <a
+              href="https://www.iscripts.com/productlisting.php"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.heroCatalogLink}
+            >
+              <span>View all 25+ platforms in the full catalog</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 3.5L10.5 8L6 12.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </Container>
     </section>

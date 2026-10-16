@@ -1,0 +1,670 @@
+/* ==========================================================================
+   HeroSlider.module.css — Precision Reference Redesign
+   - Subtle architectural engineering grid background
+   - 04 / 04 ─── counter header
+   - Two-tone bold editorial headline (dark + soft slate gray)
+   - 3 Column feature highlights with vertical line dividers
+   - Large-scale authentic device composition
+   - Full-width bottom navigation selector bar with slot dividers & arrow controls
+   - Strictly >= 15px typography compliance
+   ========================================================================== */
+
+.heroSection {
+  position: relative;
+  background-color: var(--bg-primary, #FAFAF8);
+  padding-top: clamp(14px, 1.8vw, 24px);
+  padding-bottom: clamp(16px, 2vw, 26px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle, #ECEEE9);
+}
+
+/* Subtle Engineering Blueprint Grid */
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at 50% 45%, black 45%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 45%, black 45%, transparent 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Asymmetric Composition Grid (Editorial Left / Software Stage Right)
+   -------------------------------------------------------------------------- */
+.heroAsymmetricGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 42px);
+  min-height: 410px;
+}
+
+/* --------------------------------------------------------------------------
+   Left: Editorial Content
+   -------------------------------------------------------------------------- */
+.editorialColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.editorialContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 04 / 04 ─── Counter Header */
+.counterRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-family: monospace, inherit;
+  font-weight: 700;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.counterCurrent {
+  color: var(--accent, #D9383A);
+}
+
+.counterSlash {
+  color: #6B7280;
+  font-weight: 400;
+}
+
+.counterTotal {
+  color: #9CA3AF;
+  font-weight: 600;
+}
+
+.counterLine {
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background-color: #D1D5DB;
+  margin-left: 4px;
+}
+
+/* Two-Tone Masked Headline */
+.headlineMask {
+  position: relative;
+  overflow: hidden;
+  min-height: 122px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.headline {
+  font-size: clamp(35px, 3.5vw, 50px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin: 0;
+  text-wrap: balance;
+  will-change: transform, opacity;
+}
+
+.headlineDark {
+  color: var(--text-primary, #151716);
+}
+
+.headlineMuted {
+  color: #8C929C; /* Soft slate gray matching reference image */
+}
+
+/* Masked Description */
+.descriptionMask {
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  margin-bottom: 18px;
+}
+
+.description {
+  font-size: clamp(15.5px, 1.2vw, 17px);
+  line-height: 1.58;
+  color: var(--text-secondary, #525852);
+  margin: 0;
+  max-width: 480px;
+  text-wrap: pretty;
+  will-change: transform, opacity;
+}
+
+/* Actions Row: Red Primary CTA + Text Secondary Action */
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.primaryCta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--accent, #D9383A);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: var(--radius-sm, 7px);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(217, 56, 58, 0.18), 0 4px 14px rgba(217, 56, 58, 0.16);
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.primaryCta:hover {
+  background-color: var(--accent-hover, #C32F31);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(217, 56, 58, 0.24);
+}
+
+.primaryCta:active {
+  transform: translateY(0);
+}
+
+.ctaLabelStage {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 130px;
+  height: 20px;
+}
+
+.ctaLabel {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.primaryCtaArrow {
+  transition: transform 160ms ease;
+  flex-shrink: 0;
+}
+
+.primaryCta:hover .primaryCtaArrow {
+  transform: translateX(3px);
+}
+
+/* Understated Secondary Text Action */
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--text-primary, #151716);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 4px;
+  cursor: pointer;
+  transition: color 160ms ease;
+  text-decoration: none;
+}
+
+.secondaryArrow {
+  color: var(--text-muted, #717671);
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.secondaryAction:hover {
+  color: var(--accent, #D9383A);
+}
+
+.secondaryAction:hover .secondaryArrow {
+  color: var(--accent, #D9383A);
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   3 Feature Highlights with Vertical Dividers (Reference Layout)
+   -------------------------------------------------------------------------- */
+.featuresRow {
+  display: flex;
+  align-items: stretch;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle, #ECEEE9);
+}
+
+.featuresTrack {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.featureItem {
+  flex: 1;
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.featureItem:first-child {
+  padding-left: 0;
+}
+
+.featureItemBorder {
+  border-left: 1px solid var(--border-color, #E5E7EB);
+}
+
+.featureTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary, #151716);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.featureSubtitle {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary, #6B7280);
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Right: Expansive Software Canvas Stage (One Living Product Canvas)
+   -------------------------------------------------------------------------- */
+.stageColumn {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productVisualStage {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle Stage Pedestal Horizon */
+.stageHorizon {
+  position: absolute;
+  bottom: 4%;
+  left: 6%;
+  right: 6%;
+  height: 36px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, 0.07) 0%, transparent 72%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stageCanvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 585 / 477;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.visualCanvasLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.mockupContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deviceImage {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 24px 50px rgba(18, 24, 38, 0.11)) drop-shadow(0 2px 8px rgba(18, 24, 38, 0.04));
+  transition: filter 260ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Full-Width Navigation Selector Bar (Reference Layout)
+   -------------------------------------------------------------------------- */
+.bottomNavWrapper {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(14px, 1.6vw, 22px);
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle, #ECEEE9);
+}
+
+.referenceBottomNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.navPlatformsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex: 1;
+}
+
+.navSlot {
+  background: none;
+  border: none;
+  padding: 6px 16px 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  user-select: none;
+  transition: opacity 160ms ease;
+}
+
+.navSlot:first-child {
+  padding-left: 0;
+}
+
+.navSlotBorder {
+  border-left: 1px solid var(--border-color, #E5E7EB);
+}
+
+.slotHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.slotIndex {
+  font-size: 15px;
+  font-family: monospace, inherit;
+  font-weight: 700;
+  color: var(--text-muted, #8C918C);
+  transition: color 160ms ease;
+}
+
+.slotName {
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--text-primary, #151716);
+  transition: color 160ms ease;
+}
+
+.slotSubtitle {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary, #6B7280);
+  line-height: 1.35;
+  transition: color 160ms ease;
+}
+
+/* Active Slot Indicator Underline */
+.slotProgressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.slotProgressFill {
+  display: block;
+  height: 100%;
+  background-color: var(--accent, #D9383A);
+  border-radius: 2px;
+  transition: width 50ms linear;
+}
+
+.navSlotActive .slotIndex {
+  color: var(--accent, #D9383A);
+}
+
+.navSlotActive .slotName {
+  color: var(--text-primary, #151716);
+  font-weight: 700;
+}
+
+.navSlotActive .slotSubtitle {
+  color: var(--text-secondary, #374151);
+}
+
+.navSlot:hover:not(.navSlotActive) .slotName {
+  color: var(--accent, #D9383A);
+}
+
+/* Far Right Controls Group */
+.navControlsGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-left: 14px;
+}
+
+.arrowBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color, #E5E7EB);
+  background-color: #FFFFFF;
+  color: var(--text-secondary, #374151);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.arrowBtn:hover {
+  background-color: var(--bg-hover, #F3F4F0);
+  border-color: var(--border-strong, #D1D5DB);
+  color: var(--text-primary, #151716);
+}
+
+.navPlayBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #E5E7EB);
+  background-color: #FFFFFF;
+  color: var(--text-muted, #6B7280);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.navPlayBtn:hover {
+  background-color: var(--bg-hover, #F3F4F0);
+  color: var(--text-primary, #151716);
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Overrides
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .headline,
+  .description,
+  .ctaLabel,
+  .visualCanvasLayer,
+  .featuresTrack {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1180px) {
+  .heroAsymmetricGrid {
+    grid-template-columns: 46fr 54fr;
+    gap: 32px;
+  }
+
+  .headlineMask {
+    min-height: 130px;
+  }
+
+  .headline {
+    font-size: clamp(34px, 3.4vw, 50px);
+  }
+
+  .featureItem {
+    padding: 0 12px;
+  }
+
+  .navSlot {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 960px) {
+  .heroAsymmetricGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    min-height: auto;
+  }
+
+  .editorialColumn {
+    text-align: left;
+  }
+
+  .headlineMask {
+    min-height: auto;
+    margin-bottom: 14px;
+  }
+
+  .descriptionMask {
+    min-height: auto;
+    margin-bottom: 20px;
+  }
+
+  .featuresRow {
+    flex-wrap: wrap;
+  }
+
+  .featuresTrack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .featureItem {
+    padding: 0;
+  }
+
+  .featureItemBorder {
+    border-left: none;
+  }
+
+  .productVisualStage {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navPlatformsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .navSlot {
+    padding: 6px 0;
+  }
+
+  .navSlotBorder {
+    border-left: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroSection {
+    padding-top: 22px;
+    padding-bottom: 32px;
+  }
+
+  .counterRow {
+    margin-bottom: 12px;
+  }
+
+  .headline {
+    font-size: clamp(30px, 7vw, 40px);
+    line-height: 1.12;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .actionRow {
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .primaryCta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .secondaryAction {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .featuresTrack {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .navPlatformsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .slotSubtitle {
+    display: none;
+  }
+
+  .productVisualStage {
+    max-width: 100%;
+  }
+
+  .navControlsGroup {
+    display: none;
+  }
+}

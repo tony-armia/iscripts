@@ -1,0 +1,129 @@
+.section {
+  padding-top: clamp(80px, 9vw, 128px);
+  padding-bottom: clamp(80px, 9vw, 128px);
+  background-color: var(--bg-primary);
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md, 8px);
+  padding: clamp(36px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(40px, 5vw, 64px);
+  align-items: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 960px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 36px;
+  }
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 580;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+.subtext {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Contact Desk */
+.contactDesk {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm, 6px);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deskHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.deskTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.deskStatus {
+  font-size: 15px;
+  color: #2F9E44;
+  font-weight: 500;
+  background-color: #EBFBEE;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.deskRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.deskLabel {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.deskPhone,
+.deskMail {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: monospace;
+  text-decoration: none;
+  transition: color var(--transition-fast, 160ms);
+}
+
+.deskPhone:hover,
+.deskMail:hover {
+  color: var(--accent);
+}
+
+.deskFooter {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 15px;
+  color: var(--text-muted);
+}

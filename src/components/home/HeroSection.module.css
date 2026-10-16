@@ -1,0 +1,1047 @@
+/* ==========================================================================
+   HeroSection.module.css — Minimal, Refined, Airy Art Direction
+   - Left: Refined display typography, disciplined weights, generous whitespace
+   - Right: Sleek, lightweight MultiCart tablet & slender, proportional iPhone (180px)
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  background-color: var(--canvas-main, #FAF9F5);
+  padding-top: clamp(40px, 4.2vw, 56px);
+  padding-bottom: clamp(60px, 6.5vw, 84px);
+  overflow: hidden;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  align-items: center;
+  gap: clamp(32px, 4vw, 48px);
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Minimal & Architectural Typography
+   -------------------------------------------------------------------------- */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.eyebrow {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #D9383A;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headline {
+  font-size: clamp(34px, 3.4vw, 46px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #111827;
+  margin: 0 0 18px 0;
+}
+
+.supportingText {
+  font-size: 16px;
+  line-height: 1.62;
+  color: #555A64;
+  max-width: 440px;
+  margin: 0 0 28px 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #D9383A;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 26px;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 1px 2px rgba(217, 56, 58, 0.2);
+}
+
+.primaryCta:hover {
+  background-color: #C32F31;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 56, 58, 0.25);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.secondaryCta:hover {
+  color: #D9383A;
+  transform: translateX(2px);
+}
+
+.ctaArrow {
+  transition: transform 160ms ease;
+}
+
+.primaryCta:hover .ctaArrow,
+.secondaryCta:hover .ctaArrow {
+  transform: translateX(2px);
+}
+
+/* 4-Item Horizontal Stats Row */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statNumber {
+  font-size: 26px;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6B7280;
+  margin-top: 4px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Lightweight Tablet & Slender iPhone
+   -------------------------------------------------------------------------- */
+.showcaseCol {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle Flourish */
+.flourishWrapper {
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  width: 140px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flourishSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Minimal Tablet Frame */
+.tabletFrame {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 16px 44px -10px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.02);
+  overflow: hidden;
+  z-index: 2;
+  transform: perspective(1600px) rotateY(-2.5deg) rotateX(1.2deg);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.tabletFrame:hover {
+  transform: perspective(1600px) rotateY(-1deg) rotateX(0.5deg);
+  box-shadow: 0 20px 52px -10px rgba(16, 24, 40, 0.11), 0 3px 8px rgba(16, 24, 40, 0.03);
+}
+
+/* Tablet Top Bar */
+.tabletTopBar {
+  height: 44px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #F3F4F6;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabletLogo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.logoBagIcon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF0F1;
+  color: #D9383A;
+  border-radius: 5px;
+}
+
+.logoText {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.015em;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background-color: #F9FAFB;
+  border: 1px solid #F3F4F6;
+  border-radius: 6px;
+  padding: 5px 10px;
+  width: 175px;
+}
+
+.searchIcon {
+  color: #9CA3AF;
+  flex-shrink: 0;
+}
+
+.searchPlaceholder {
+  font-size: 10px;
+  color: #9CA3AF;
+  white-space: nowrap;
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bellButton {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 3px;
+  color: #6B7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.bellDot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 5px;
+  height: 5px;
+  background-color: #EF4444;
+  border-radius: 50%;
+  border: 1px solid #FFFFFF;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.userAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-size: 10px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.userRole {
+  font-size: 8.5px;
+  color: #9CA3AF;
+  line-height: 1.1;
+}
+
+.chevronIcon {
+  color: #9CA3AF;
+}
+
+/* Tablet Body Layout (Sidebar + Main) */
+.tabletBody {
+  display: flex;
+  background-color: #FAFAFA;
+  min-height: 420px;
+}
+
+/* Clean, Spacious Sidebar */
+.sidebar {
+  width: 135px;
+  background-color: #FFFFFF;
+  border-right: 1px solid #F3F4F6;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.sidebarNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebarNavItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #4B5563;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.sidebarNavItem:hover {
+  background-color: #F9FAFB;
+  color: #111827;
+}
+
+.sidebarNavActive {
+  background-color: #FFF0F2;
+  color: #D9383A;
+  font-weight: 600;
+}
+
+.sidebarNavActive:hover {
+  background-color: #FFF0F2;
+  color: #D9383A;
+}
+
+.navItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.navItemIcon {
+  width: 13px;
+  height: 13px;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.orderBadge {
+  background-color: #FEE2E2;
+  color: #D9383A;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 8px;
+}
+
+/* Sidebar Promo Card */
+.sidebarPromoCard {
+  background: linear-gradient(135deg, #FFF7F2 0%, #FAECE3 100%);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.promoImgWrapper {
+  width: 100%;
+  height: 52px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.promoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promoTitle {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.promoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #D9383A;
+  text-decoration: none;
+}
+
+/* Main Dashboard Area */
+.mainDashboard {
+  flex: 1;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* 3 Airy Metric Cards */
+.metricCardsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.metricCard {
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  border: 1px solid #F3F4F6;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.015);
+}
+
+.metricTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.metricLabel {
+  font-size: 9.5px;
+  font-weight: 500;
+  color: #6B7280;
+}
+
+.metricIcon {
+  color: #9CA3AF;
+  width: 12px;
+  height: 12px;
+}
+
+.metricValue {
+  font-size: 14px;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.015em;
+}
+
+.metricDelta {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #12B76A;
+  margin-top: 1px;
+}
+
+/* Sales Overview Chart Card */
+.chartCard {
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  border: 1px solid #F3F4F6;
+  padding: 10px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.015);
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.chartTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.chartControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 500;
+  color: #6B7280;
+}
+
+.legendDotRed {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #D9383A;
+}
+
+.legendDotGray {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #D1D5DB;
+}
+
+.filterSelect {
+  font-size: 9px;
+  font-weight: 500;
+  color: #4B5563;
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 76px;
+}
+
+.svgChart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Recent Orders Table Card */
+.ordersCard {
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  border: 1px solid #F3F4F6;
+  padding: 10px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.015);
+}
+
+.ordersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ordersTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.viewAllLink {
+  font-size: 9px;
+  font-weight: 600;
+  color: #6B7280;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.viewAllLink:hover {
+  color: #D9383A;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ordersTable th {
+  text-align: left;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #9CA3AF;
+  padding: 3px 5px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.ordersTable td {
+  padding: 5px 5px;
+  font-size: 9.5px;
+  color: #374151;
+  border-bottom: 1px solid #F9FAFB;
+  vertical-align: middle;
+}
+
+.customerCell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.customerAvatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.productCell {
+  color: #4B5563;
+}
+
+.amountCell {
+  font-weight: 600;
+  color: #111827;
+}
+
+.statusCompleted {
+  display: inline-block;
+  background-color: #ECFDF3;
+  color: #027A48;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1.5px 6px;
+  border-radius: 8px;
+}
+
+.statusProcessing {
+  display: inline-block;
+  background-color: #EFF8FF;
+  color: #175CD3;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1.5px 6px;
+  border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Slender, Proportional Mobile Phone Mockup (180px Width)
+   -------------------------------------------------------------------------- */
+.phoneOverlay {
+  position: absolute;
+  right: -16px;
+  bottom: -20px;
+  width: 180px;
+  background-color: #FFFFFF;
+  border: 3.5px solid #1C2024;
+  border-radius: 28px;
+  box-shadow: 0 20px 48px -10px rgba(16, 24, 40, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Phone Screen Header */
+.phoneTopBar {
+  padding: 5px 10px 2px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+}
+
+.phoneTime {
+  font-size: 8px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.phoneIsland {
+  width: 38px;
+  height: 7px;
+  background-color: #111827;
+  border-radius: 8px;
+}
+
+.phoneStatusIcons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #111827;
+}
+
+.phoneAppHeader {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phoneBrand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.phoneBagIcon {
+  width: 14px;
+  height: 14px;
+  background-color: #FFF0F1;
+  color: #D9383A;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phoneBrandName {
+  font-size: 9.5px;
+  font-weight: 750;
+  color: #111827;
+}
+
+.phoneSearchWrapper {
+  padding: 0 10px 5px 10px;
+}
+
+.phoneSearchInput {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #F3F4F6;
+  border-radius: 5px;
+  padding: 4px 7px;
+  font-size: 8px;
+  color: #9CA3AF;
+}
+
+/* Phone Hero Promo Banner */
+.phoneBanner {
+  margin: 0 10px 6px 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  height: 68px;
+  background-color: #E5E7EB;
+}
+
+.phoneBannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.phoneBannerContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.phoneBannerTitle {
+  font-size: 8px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.15;
+}
+
+.phoneBannerDesc {
+  font-size: 6.5px;
+  color: #4B5563;
+  line-height: 1.2;
+  margin: 1px 0 3px 0;
+}
+
+.phoneBannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background-color: #D9383A;
+  color: #FFFFFF;
+  font-size: 6px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 3px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+/* Category Strip */
+.categoryStrip {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 6px 10px;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5px;
+}
+
+.categoryIconBox {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #F9FAFB;
+  border: 1px solid #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4B5563;
+}
+
+.categoryName {
+  font-size: 6.5px;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+/* Featured Products on Phone */
+.phoneProductsSection {
+  padding: 0 10px 5px 10px;
+}
+
+.phoneProductsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.phoneProductsTitle {
+  font-size: 8px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.phoneViewAll {
+  font-size: 6.5px;
+  font-weight: 600;
+  color: #6B7280;
+  text-decoration: none;
+}
+
+.phoneProductsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.phoneProductCard {
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  padding: 3px;
+  border: 1px solid #F3F4F6;
+  display: flex;
+  flex-direction: column;
+}
+
+.productImgWrapper {
+  width: 100%;
+  height: 42px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  margin-bottom: 2px;
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productName {
+  font-size: 7px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productPrice {
+  font-size: 7.5px;
+  font-weight: 750;
+  color: #111827;
+}
+
+/* Fixed Phone Bottom Nav Bar */
+.phoneBottomNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px 5px 10px;
+  border-top: 1px solid #F3F4F6;
+  background-color: #FFFFFF;
+}
+
+.phoneNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: #9CA3AF;
+  font-size: 6.5px;
+  position: relative;
+}
+
+.phoneNavActive {
+  color: #D9383A;
+  font-weight: 700;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  background-color: #EF4444;
+  color: #FFFFFF;
+  font-size: 5.5px;
+  font-weight: 700;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Behavior
+   -------------------------------------------------------------------------- */
+@media (max-width: 1120px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contentCol {
+    max-width: 640px;
+  }
+
+  .phoneOverlay {
+    right: 6px;
+    bottom: -12px;
+    width: 170px;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding-top: 24px;
+    padding-bottom: 44px;
+  }
+
+  .statsRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+  }
+
+  .searchBar {
+    display: none;
+  }
+
+  .showcaseCol {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .tabletFrame {
+    transform: none;
+    max-width: 100%;
+  }
+
+  .tabletBody {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #F3F4F6;
+    padding-bottom: 8px;
+  }
+
+  .sidebarNavList {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .sidebarPromoCard {
+    display: none;
+  }
+
+  .metricCardsRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .phoneOverlay {
+    position: static;
+    margin: 16px auto 0 auto;
+    width: 200px;
+    transform: none;
+  }
+
+  .flourishWrapper {
+    display: none;
+  }
+}

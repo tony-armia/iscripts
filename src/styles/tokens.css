@@ -1,0 +1,72 @@
+:root {
+  /* Surface & Background Colors */
+  --bg-primary: #FAFAF8;
+  --bg-secondary: #F3F4F1;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F0F1EE;
+
+  /* Typography Colors */
+  --text-primary: #151716;
+  --text-secondary: #626762;
+  --text-muted: #8C918C;
+  --text-inverse: #FFFFFF;
+
+  /* Borders & Dividers (Restrained Hairlines) */
+  --border-color: #E3E5E0;
+  --border-subtle: #ECEEE9;
+  --border-strong: #C9CCC4;
+
+  /* Brand Accent: Authentic iScripts Crimson */
+  --accent: #D9383A;
+  --accent-hover: #C22B2D;
+  --accent-active: #A82022;
+  --accent-subtle: #FDF3F3;
+  --accent-border: rgba(217, 56, 58, 0.22);
+  --accent-text: #B72023;
+
+  /* Dark Feature Section Tokens (Payload/Editorial Inspired) */
+  --dark-bg: #121513;
+  --dark-surface: #181C19;
+  --dark-card: #202522;
+  --dark-card-hover: #262D29;
+  --dark-border: #272F2A;
+  --dark-border-subtle: #1D231F;
+  --dark-text-primary: #F6F7F5;
+  --dark-text-secondary: #A0A7A2;
+  --dark-text-muted: #6E7570;
+
+  /* Geometry & Radii (Rectangular with restrained subtle radii) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  /* Shadows (Subtle, purposeful, non-distracting) */
+  --shadow-sm: 0 1px 2px rgba(21, 23, 22, 0.04);
+  --shadow-md: 0 4px 16px rgba(21, 23, 22, 0.05);
+  --shadow-lg: 0 16px 40px rgba(21, 23, 22, 0.07);
+  --shadow-stage: 0 24px 64px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-dropdown: 0 12px 32px rgba(0, 0, 0, 0.08);
+
+  /* Layout Containers */
+  --container-max: 1280px;
+  --container-narrow: 840px;
+  --container-gutter: 24px;
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography Scale Tokens (Strict minimum 15px / 16px for readability) */
+  --font-size-xs: 15px;       /* Absolute minimum for badges, tags, meta, subtle hints */
+  --font-size-sm: 16px;       /* Standard body, inputs, button sm/md, secondary copy */
+  --font-size-base: 16px;     /* Default base body size */
+  --font-size-md: 17px;       /* Prominent body, lead text */
+  --font-size-lg: 18px;       /* Subheadings, card titles */
+  --font-size-xl: 20px;       /* Intermediate headings */
+  --font-size-2xl: 24px;      /* Large titles, modal titles */
+  --font-size-3xl: 28px;      /* Prominent section headers */
+  --font-size-4xl: 36px;      /* Main section headings */
+  --font-size-5xl: 48px;      /* Hero headlines */
+}

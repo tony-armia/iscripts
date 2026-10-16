@@ -1,0 +1,22 @@
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.logoImage {
+  height: 38px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .logoImage {
+    height: 32px;
+    max-width: 140px;
+  }
+}
+

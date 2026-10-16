@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-gutter, 24px);
+  padding-right: var(--container-gutter, 24px);
+}
+
+.default {
+  max-width: var(--container-max, 1240px);
+}
+
+.narrow {
+  max-width: var(--container-narrow, 840px);
+}
+
+.wide {
+  max-width: 1380px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

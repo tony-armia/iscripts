@@ -1,0 +1,134 @@
+.section {
+  padding-top: clamp(80px, 8vw, 112px);
+  padding-bottom: clamp(80px, 8vw, 112px);
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.directory {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 60px 1.8fr 1.2fr 160px;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  background-color: transparent;
+  transition: background-color var(--transition-fast, 160ms), border-color var(--transition-fast, 160ms), padding-left var(--transition-fast, 160ms);
+  border-radius: var(--radius-sm, 6px);
+}
+
+.row:hover {
+  background-color: #FFFFFF;
+  border-color: var(--border-strong);
+  padding-left: 20px;
+}
+
+@media (max-width: 960px) {
+  .row {
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+  }
+  
+  .platformCol {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px 12px;
+  }
+  
+  .indexCol {
+    display: none;
+  }
+}
+
+/* Columns */
+.indexCol {
+  display: flex;
+  align-items: center;
+}
+
+.indexNumber {
+  font-size: 15px;
+  font-family: monospace;
+  color: var(--text-muted);
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rowTitle {
+  font-size: 18px;
+  font-weight: 580;
+  color: var(--text-primary);
+  transition: color var(--transition-fast, 160ms);
+}
+
+.row:hover .rowTitle {
+  color: var(--accent);
+}
+
+.rowDesc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.platformCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recommendedLabel {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.platformName {
+  font-size: 16px;
+  font-weight: 550;
+  color: var(--text-primary);
+}
+
+.actionCol {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actionText {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast, 160ms);
+}
+
+.row:hover .actionText {
+  color: var(--accent);
+}
+
+.rowArrow {
+  color: var(--text-muted);
+  transition: transform var(--transition-fast, 160ms), color var(--transition-fast, 160ms);
+}
+
+.row:hover .rowArrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}

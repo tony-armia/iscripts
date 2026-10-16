@@ -1,0 +1,238 @@
+.section {
+  padding-top: clamp(88px, 10vw, 136px);
+  padding-bottom: clamp(88px, 10vw, 136px);
+  background-color: var(--dark-bg, #121513);
+  color: var(--dark-text-primary, #F6F7F5);
+  border-bottom: 1px solid var(--dark-border, #272F2A);
+  position: relative;
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 6vw, 72px);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .editorialGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #E27274;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #E27274;
+  border-radius: 1px;
+}
+
+.heading {
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 580;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+  text-wrap: balance;
+}
+
+.description {
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.6;
+  color: var(--dark-text-secondary, #A0A7A2);
+  margin-bottom: 36px;
+  text-wrap: pretty;
+}
+
+/* Minimal Typography-Led Capability Rows */
+.capabilitiesList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--dark-border, #272F2A);
+  margin-bottom: 36px;
+}
+
+.capabilityRow {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--dark-border, #272F2A);
+  align-items: baseline;
+}
+
+.capIndex {
+  font-size: 15px;
+  font-family: monospace;
+  color: #E27274;
+}
+
+.capContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.capTitle {
+  font-size: 17px;
+  font-weight: 580;
+  color: #FFFFFF;
+}
+
+.capDetail {
+  font-size: 15px;
+  color: var(--dark-text-secondary, #A0A7A2);
+  line-height: 1.55;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+}
+
+/* Right Column: Visual Frame */
+.rightCol {
+  width: 100%;
+}
+
+.visualFrame {
+  background-color: var(--dark-surface, #181C19);
+  border: 1px solid var(--dark-border, #272F2A);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.frameHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: #151916;
+  border-bottom: 1px solid var(--dark-border, #272F2A);
+  gap: 12px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #363F39;
+}
+
+.frameLabel {
+  font-size: 15px;
+  font-family: monospace;
+  color: var(--dark-text-secondary, #A0A7A2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.liveIndicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: #4ADE80;
+  font-weight: 500;
+}
+
+.liveDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #4ADE80;
+}
+
+.screenWrapper {
+  background-color: #0E110F;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screenImage {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-sm, 6px);
+  display: block;
+}
+
+/* Development Meta */
+.devMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: #151916;
+  border-top: 1px solid var(--dark-border, #272F2A);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .devMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .devMetaDivider {
+    display: none;
+  }
+}
+
+.devMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaLabel {
+  font-size: 15px;
+  color: var(--dark-text-muted, #6E7570);
+}
+
+.metaValue {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.devMetaDivider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--dark-border, #272F2A);
+}

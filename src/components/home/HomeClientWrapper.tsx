@@ -28,31 +28,31 @@ export default function HomeClientWrapper() {
         {/* Section 01: Hero Slider Showcase (MultiCart, NetMenus, UberforX, Locologic) */}
         <HeroSection onOpenContact={handleOpenContact} />
 
-        {/* Section 02: 15-Year Track Record & Continuous Credibility Marquee */}
+        {/* Continuous Credibility & Metrics Marquee */}
         <CredibilityStrip />
+
+        {/* Section 02: Why Choose iScripts — Core Architecture & Source Code Ownership Pillars */}
+        <WhyIScripts />
 
         {/* Section 03: Turnkey Software Platforms Catalog (9 Flagship Products with Category Filtering) */}
         <FeaturedPlatforms />
 
-        {/* Section 04: What You Get — Core Architecture & Source Code Ownership Pillars */}
-        <WhyIScripts />
-
-        {/* Section 05: Custom Engineering & Chicago Startup Advisory (Jon S.) */}
+        {/* Section 04: Custom Engineering & Chicago Startup Advisory (Jon S.) */}
         <CustomDevelopment onOpenContact={handleOpenContact} />
 
-        {/* Section 06: Empowering Your Startup — 6-Step Startup Execution Roadmap */}
+        {/* Section 05: Empowering Your Startup — 6-Step Startup Execution Roadmap */}
         <ExecutionRoadmap />
 
-        {/* Section 07: Open Enterprise Technology Stacks */}
+        {/* Section 06: Open Enterprise Technology Stacks */}
         <TechStackSection />
 
-        {/* Section 08: Verified Client Stories & Outcomes (What iScripts Customers Say) */}
+        {/* Section 07: Verified Client Stories & Outcomes (What iScripts Customers Say) */}
         <CustomerStories />
 
-        {/* Section 09: Connect With Our Experts & Development Center Consultation Form */}
+        {/* Section 08: Connect With Our Experts & Development Center Consultation Form */}
         <ExpertConsultation onOpenContact={handleOpenContact} />
 
-        {/* Section 10: Industry Accreditations & Trust Seals (NASSCOM, AWS, ITA, Clutch, BBB) */}
+        {/* Section 09: Industry Accreditations & Trust Seals (NASSCOM, AWS, ITA, Clutch, BBB) */}
         <TrustAccreditations />
       </main>
       <Footer />

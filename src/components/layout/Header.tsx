@@ -5,7 +5,7 @@ import Link from 'next/link';
 import BrandLogo from '../ui/BrandLogo';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
-import { PLATFORM_CATEGORIES, SOLUTIONS_ITEMS } from '@/data/navigation';
+import { PLATFORM_CATEGORIES } from '@/data/navigation';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onOpenContact }: HeaderProps) {
-  const [activeMenu, setActiveMenu] = useState<'platforms' | 'solutions' | 'services' | null>(null);
+  const [platformsOpen, setPlatformsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -22,7 +22,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setActiveMenu(null);
+        setPlatformsOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -33,7 +33,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setActiveMenu(null);
+        setPlatformsOpen(false);
         setMobileMenuOpen(false);
       }
     }
@@ -53,10 +53,6 @@ export default function Header({ onOpenContact }: HeaderProps) {
     };
   }, [mobileMenuOpen]);
 
-  const toggleMenu = (menu: 'platforms' | 'solutions' | 'services') => {
-    setActiveMenu((prev) => (prev === menu ? null : menu));
-  };
-
   const toggleMobileAccordion = (key: string) => {
     setMobileAccordion((prev) => (prev === key ? null : key));
   };
@@ -69,31 +65,32 @@ export default function Header({ onOpenContact }: HeaderProps) {
           <BrandLogo />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Clean, Decongested Desktop Navigation */}
         <nav className={styles.desktopNav} aria-label="Primary navigation">
           <ul className={styles.navList}>
             {/* Platforms Dropdown */}
             <li className={styles.navItem}>
               <button
                 type="button"
-                className={`${styles.navTrigger} ${activeMenu === 'platforms' ? styles.active : ''}`}
-                onClick={() => toggleMenu('platforms')}
-                aria-expanded={activeMenu === 'platforms'}
+                className={`${styles.navTrigger} ${platformsOpen ? styles.active : ''}`}
+                onClick={() => setPlatformsOpen(!platformsOpen)}
+                aria-expanded={platformsOpen}
                 aria-haspopup="true"
               >
                 <span>Platforms</span>
                 <svg
-                  className={`${styles.chevron} ${activeMenu === 'platforms' ? styles.chevronOpen : ''}`}
-                  width="12"
-                  height="12"
+                  className={`${styles.chevron} ${platformsOpen ? styles.chevronOpen : ''}`}
+                  width="11"
+                  height="11"
                   viewBox="0 0 16 16"
                   fill="none"
+                  aria-hidden="true"
                 >
-                  <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
 
-              {activeMenu === 'platforms' && (
+              {platformsOpen && (
                 <div className={styles.megaMenu} role="region" aria-label="Platforms directory">
                   <div className={styles.megaGrid}>
                     {PLATFORM_CATEGORIES.map((category) => (
@@ -107,7 +104,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.megaItemLink}
-                                onClick={() => setActiveMenu(null)}
+                                onClick={() => setPlatformsOpen(false)}
                               >
                                 <div className={styles.megaItemContent}>
                                   <div className={styles.megaItemHeader}>
@@ -130,68 +127,40 @@ export default function Header({ onOpenContact }: HeaderProps) {
 
                   <div className={styles.megaFooter}>
                     <div className={styles.megaFooterText}>
-                      Need guidance choosing the right architectural starting point?
+                      Over 25+ production-tested software platforms with unencrypted source code.
                     </div>
                     <a
                       href="https://www.iscripts.com/productlisting.php"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.viewAllLink}
-                      onClick={() => setActiveMenu(null)}
+                      onClick={() => setPlatformsOpen(false)}
                     >
-                      View all platforms catalog &rarr;
+                      View All 25+ Platforms &rarr;
                     </a>
                   </div>
                 </div>
               )}
             </li>
 
-            {/* Solutions Dropdown */}
-            <li className={styles.navItem}>
-              <button
-                type="button"
-                className={`${styles.navTrigger} ${activeMenu === 'solutions' ? styles.active : ''}`}
-                onClick={() => toggleMenu('solutions')}
-                aria-expanded={activeMenu === 'solutions'}
-              >
-                <span>Solutions</span>
-                <svg
-                  className={`${styles.chevron} ${activeMenu === 'solutions' ? styles.chevronOpen : ''}`}
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              {activeMenu === 'solutions' && (
-                <div className={styles.simpleDropdown} role="region" aria-label="Solutions">
-                  <ul className={styles.simpleList}>
-                    {SOLUTIONS_ITEMS.map((item) => (
-                      <li key={item.label}>
-                        <a
-                          href={item.href}
-                          className={styles.simpleItemLink}
-                          onClick={() => setActiveMenu(null)}
-                        >
-                          <div className={styles.simpleItemTitle}>{item.label}</div>
-                          {item.description && (
-                            <div className={styles.simpleItemDesc}>{item.description}</div>
-                          )}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </li>
-
-            {/* Custom Development Link */}
+            {/* Customization Link */}
             <li className={styles.navItem}>
               <a href="#custom-development" className={styles.navLink}>
-                Custom Development
+                Customization
+              </a>
+            </li>
+
+            {/* Process Link */}
+            <li className={styles.navItem}>
+              <a href="#execution-roadmap" className={styles.navLink}>
+                Process
+              </a>
+            </li>
+
+            {/* Technologies Link */}
+            <li className={styles.navItem}>
+              <a href="#technologies" className={styles.navLink}>
+                Tech Stack
               </a>
             </li>
 
@@ -201,61 +170,41 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 Showcase
               </a>
             </li>
-
-            {/* Resources Link */}
-            <li className={styles.navItem}>
-              <a href="#faqs" className={styles.navLink}>
-                Resources
-              </a>
-            </li>
           </ul>
         </nav>
 
-        {/* Right Actions */}
+        {/* Streamlined Right Actions */}
         <div className={styles.actions}>
           <a
             href="tel:13124236728"
-            className={styles.phoneLink}
-            title="Call iScripts Solutions Team"
-          >
-            <span className={styles.phoneLabel}>Direct:</span>
-            <span className={styles.phoneNumber}>1-(312)-423-6728</span>
-          </a>
-
-          <button
-            type="button"
-            className={styles.searchTrigger}
-            aria-label="Search platforms and solutions"
-            onClick={() => {
-              const el = document.getElementById('platform-showcase');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            className={styles.phoneCallout}
+            title="Call iScripts Chicago Sales Team"
           >
             <svg
-              width="17"
-              height="17"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2.2"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
+              className={styles.phoneIcon}
             >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-          </button>
+            <span>1-(312)-423-6728</span>
+          </a>
 
           <Button
             variant="primary"
             size="sm"
-            withArrow
             onClick={() => {
               if (onOpenContact) {
                 onOpenContact();
               } else {
-                const target = document.getElementById('contact-section');
+                const target = document.getElementById('expert-consultation');
                 if (target) {
                   target.scrollIntoView({ behavior: 'smooth' });
                 }
@@ -290,7 +239,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 className={styles.mobileAccordionHeader}
                 onClick={() => toggleMobileAccordion('platforms')}
               >
-                <span>Platforms</span>
+                <span>Turnkey Platforms</span>
                 <span className={styles.accordionIcon}>
                   {mobileAccordion === 'platforms' ? '−' : '+'}
                 </span>
@@ -323,39 +272,9 @@ export default function Header({ onOpenContact }: HeaderProps) {
                       rel="noopener noreferrer"
                       className={styles.mobileCatalogLink}
                     >
-                      View all platforms catalog &rarr;
+                      View All 25+ Platforms &rarr;
                     </a>
                   </div>
-                </div>
-              )}
-            </div>
-
-            {/* Accordion 2: Solutions */}
-            <div className={styles.mobileSection}>
-              <button
-                type="button"
-                className={styles.mobileAccordionHeader}
-                onClick={() => toggleMobileAccordion('solutions')}
-              >
-                <span>Solutions</span>
-                <span className={styles.accordionIcon}>
-                  {mobileAccordion === 'solutions' ? '−' : '+'}
-                </span>
-              </button>
-
-              {mobileAccordion === 'solutions' && (
-                <div className={styles.mobileAccordionBody}>
-                  {SOLUTIONS_ITEMS.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className={styles.mobileItemLink}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <span className={styles.mobileItemName}>{item.label}</span>
-                      <span className={styles.mobileItemDesc}>{item.description}</span>
-                    </a>
-                  ))}
                 </div>
               )}
             </div>
@@ -367,28 +286,35 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 className={styles.mobileDirectLink}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Custom Development
+                Custom Engineering
+              </a>
+              <a
+                href="#execution-roadmap"
+                className={styles.mobileDirectLink}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Startup Roadmap
+              </a>
+              <a
+                href="#technologies"
+                className={styles.mobileDirectLink}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Open Tech Stack
               </a>
               <a
                 href="#customer-stories"
                 className={styles.mobileDirectLink}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Showcase & Case Studies
-              </a>
-              <a
-                href="#faqs"
-                className={styles.mobileDirectLink}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Common Questions & FAQs
+                Client Case Studies
               </a>
             </div>
 
             {/* Mobile Footer CTAs */}
             <div className={styles.mobileFooterActions}>
               <a href="tel:13124236728" className={styles.mobilePhone}>
-                <span>Call sales directly:</span>
+                <span>Chicago Solutions Desk:</span>
                 <strong>1-(312)-423-6728</strong>
               </a>
               <Button
@@ -401,7 +327,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                   if (onOpenContact) {
                     onOpenContact();
                   } else {
-                    const target = document.getElementById('contact-section');
+                    const target = document.getElementById('expert-consultation');
                     if (target) {
                       target.scrollIntoView({ behavior: 'smooth' });
                     }

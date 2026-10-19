@@ -1,14 +1,26 @@
+/* ==========================================================================
+   ExecutionRoadmap.module.css — 6-Step Startup Execution Roadmap Timeline
+   - Pixel-perfect vertical timeline spine with animated progress indicator
+   - High-contrast interactive horizontal cards (Info, Deliverables, Preview)
+   - Dynamic hover lifts, glowing active nodes, and smooth micro-animations
+   - Fully responsive for mobile and tablet devices
+   ========================================================================== */
+
 .section {
-  padding-top: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
-  padding-bottom: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
-  background-color: var(--bg-secondary, #F4F5F2);
+  padding-top: var(--section-padding-y, clamp(64px, 6.5vw, 92px));
+  padding-bottom: var(--section-padding-y, clamp(64px, 6.5vw, 92px));
+  background-color: #F8FAFC;
   border-bottom: 1px solid var(--border-color, #E3E5E0);
   position: relative;
+  overflow: hidden;
 }
 
+/* --------------------------------------------------------------------------
+   Section Header
+   -------------------------------------------------------------------------- */
 .header {
   max-width: 820px;
-  margin-bottom: clamp(28px, 3.5vw, 44px);
+  margin-bottom: clamp(36px, 4.5vw, 54px);
 }
 
 .eyebrow {
@@ -52,142 +64,388 @@
   max-width: 680px;
 }
 
-/* 6-Step Grid */
-.stepsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+/* --------------------------------------------------------------------------
+   Vertical Timeline Structure
+   -------------------------------------------------------------------------- */
+.timelineContainer {
+  position: relative;
+  width: 100%;
 }
 
-.stepCard {
-  background-color: #FFFFFF;
-  border: 1px solid var(--border-color, #E3E5E0);
-  border-radius: 16px;
-  padding: 30px 26px;
-  position: relative;
+/* The vertical connecting spine line */
+.spineTrack {
+  position: absolute;
+  top: 40px;
+  bottom: 60px;
+  left: 27px; /* Center of the 56px circle (28px - 1px) */
+  width: 2px;
+  background-color: #E2E8F0;
+  z-index: 1;
+}
+
+.spineProgress {
+  width: 100%;
+  background: linear-gradient(180deg, #FF6A3D 0%, #D9383A 100%);
+  box-shadow: 0 0 10px rgba(255, 106, 61, 0.45);
+  transition: height 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Steps List & Step Row
+   -------------------------------------------------------------------------- */
+.stepsList {
   display: flex;
   flex-direction: column;
-  transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  overflow: hidden;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
 }
 
-.stepCard:hover,
-.cardActive {
-  transform: translateY(-4px);
-  border-color: rgba(217, 56, 58, 0.35);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
-}
-
-.cardHeader {
+.stepRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  position: relative;
 }
 
-.numberBadge {
-  font-size: 20px;
-  font-weight: 750;
-  font-family: var(--font-mono, monospace);
-  color: var(--accent, #D9383A);
-  line-height: 1;
+/* --------------------------------------------------------------------------
+   Left Node (Circle + Bridge)
+   -------------------------------------------------------------------------- */
+.nodeWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
 }
 
-.iconCircle {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background-color: rgba(217, 56, 58, 0.06);
-  color: var(--accent, #D9383A);
+.nodeCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 250ms ease;
+  cursor: pointer;
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  padding: 0;
 }
 
-.stepCard:hover .iconCircle,
-.cardActive .iconCircle {
-  background-color: var(--accent, #D9383A);
-  color: #FFFFFF;
-  transform: scale(1.05);
+.nodeCircle:focus-visible {
+  outline: 2px solid #FF6A3D;
+  outline-offset: 3px;
 }
 
-.phaseTag {
-  font-size: 12px;
+.nodeNumber {
+  font-size: 18px;
   font-weight: 700;
+  color: #334155;
+  transition: color 250ms ease, transform 250ms ease;
+  line-height: 1;
+}
+
+/* Active Step Node Glow (Peach background & orange text) */
+.nodeActive {
+  background-color: #FFF2EC;
+  border-color: #FF6A3D;
+  box-shadow: 0 0 0 5px rgba(255, 106, 61, 0.16), 0 8px 20px rgba(255, 106, 61, 0.22);
+  transform: scale(1.06);
+}
+
+.nodeActive .nodeNumber {
+  color: #FF5722;
+}
+
+/* Past Step Node */
+.nodePast {
+  border-color: #CBD5E1;
+}
+
+.nodePast .nodeNumber {
+  color: #1E293B;
+}
+
+/* Horizontal bridge connecting circle to card */
+.nodeBridge {
+  width: 24px;
+  height: 2px;
+  background-color: #E2E8F0;
+  transition: background-color 280ms ease;
+}
+
+.bridgeActive {
+  background-color: #FF6A3D;
+}
+
+/* --------------------------------------------------------------------------
+   Horizontal Card (3 Columns: Info, Deliverables, Thumbnail)
+   -------------------------------------------------------------------------- */
+.card {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 1px solid #E5EBF2;
+  border-radius: 18px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 250ms ease;
+}
+
+.card:focus-visible {
+  outline: 2px solid #FF6A3D;
+  outline-offset: 2px;
+}
+
+.card:hover,
+.cardActive {
+  transform: translateX(6px);
+  border-color: rgba(255, 106, 61, 0.45);
+  box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08), 0 4px 14px rgba(255, 106, 61, 0.05);
+}
+
+/* Left Accent Indicator Bar */
+.cardAccentBar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #FF6A3D 0%, #D9383A 100%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.cardActive .cardAccentBar {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Column 1: Info (Eyebrow + Title + Description)
+   -------------------------------------------------------------------------- */
+.infoCol {
+  flex: 1.35;
+  min-width: 0;
+}
+
+.phaseBadge {
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #6B7280;
+  color: #3B82F6; /* Crisp steel/cyan blue matching screenshot */
+  display: inline-block;
   margin-bottom: 6px;
 }
 
 .stepTitle {
   font-size: 20px;
-  font-weight: 650;
-  color: #111827;
-  margin: 0 0 10px 0;
-  line-height: 1.3;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px 0;
 }
 
 .stepSummary {
-  font-size: 14.5px;
-  line-height: 1.58;
-  color: #4B5563;
-  margin: 0 0 20px 0;
-  flex: 1;
+  font-size: 13.5px;
+  line-height: 1.56;
+  color: #475569;
+  margin: 0;
+  max-width: 380px;
+}
+
+/* --------------------------------------------------------------------------
+   Column 2: Deliverables List
+   -------------------------------------------------------------------------- */
+.deliverablesCol {
+  flex: 1.05;
+  min-width: 0;
+  padding-left: 10px;
 }
 
 .deliverablesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  gap: 10px;
 }
 
 .deliverableItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13.5px;
-  color: #374151;
-  font-weight: 500;
+  gap: 11px;
 }
 
-.checkDot {
-  width: 6px;
-  height: 6px;
+.bulletDot {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background-color: var(--accent, #D9383A);
   flex-shrink: 0;
+  transition: all 250ms ease;
 }
 
-.bottomBar {
+/* Inactive cards use soft blue bullet dots */
+.bulletDotDefault {
+  background-color: #3B82F6;
+}
+
+/* Active card uses bright orange glowing bullet dots */
+.bulletDotActive {
+  background-color: #FF6A3D;
+  box-shadow: 0 0 6px rgba(255, 106, 61, 0.45);
+  transform: scale(1.2);
+}
+
+.deliverableText {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Column 3: High-Res Visual Preview Thumbnail
+   -------------------------------------------------------------------------- */
+.thumbnailCol {
+  flex-shrink: 0;
+  width: 220px;
+  height: 118px;
+}
+
+.thumbnailFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #F1F5F9;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.thumbnailImage {
+  object-fit: cover;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .thumbnailImage,
+.cardActive .thumbnailImage {
+  transform: scale(1.06);
+}
+
+.thumbnailGlow {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background-color: var(--accent, #D9383A);
-  opacity: 0;
-  transition: opacity 250ms ease;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0.04) 100%);
+  pointer-events: none;
 }
 
-.stepCard:hover .bottomBar,
-.cardActive .bottomBar {
-  opacity: 1;
+/* --------------------------------------------------------------------------
+   Responsive Layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 1140px) {
+  .card {
+    gap: 24px;
+    padding: 20px 24px;
+  }
+
+  .thumbnailCol {
+    width: 190px;
+    height: 108px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
 }
 
-@media (max-width: 1024px) {
-  .stepsGrid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 960px) {
+  .spineTrack {
+    left: 23px;
+  }
+
+  .nodeCircle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nodeNumber {
+    font-size: 16px;
+  }
+
+  .nodeBridge {
+    width: 16px;
+  }
+
+  .card {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .infoCol {
+    flex: 1 1 100%;
+  }
+
+  .deliverablesCol {
+    flex: 1;
+    padding-left: 0;
+  }
+
+  .thumbnailCol {
+    width: 170px;
+    height: 100px;
   }
 }
 
 @media (max-width: 680px) {
-  .stepsGrid {
-    grid-template-columns: 1fr;
+  .spineTrack {
+    display: none;
+  }
+
+  .nodeBridge {
+    display: none;
+  }
+
+  .stepRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .nodeWrapper {
+    margin-bottom: -4px;
+  }
+
+  .nodeCircle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 18px;
     gap: 16px;
+  }
+
+  .thumbnailCol {
+    width: 100%;
+    height: 160px;
+  }
+
+  .deliverablesCol {
+    padding-top: 8px;
+    border-top: 1px solid #F1F5F9;
   }
 }

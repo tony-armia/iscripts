@@ -68,7 +68,7 @@ export default function WhyIScripts() {
   const [activeId, setActiveId] = useState<string>('01');
 
   return (
-    <section className={styles.section} id="made-to-become-yours">
+    <section className={styles.section} id="why-choose-iscripts">
       <Container size="default">
         {/* Section Header */}
         <div className={styles.header}>

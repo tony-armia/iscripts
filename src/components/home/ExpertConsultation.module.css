@@ -1,36 +1,51 @@
 /* ==========================================================================
-   ExpertConsultation.module.css — Real iscripts.com Lead Gen & Dev Center
-   - Direct founder consultation form with real-time feedback
-   - Development center credentials and direct Chicago advisory lines
-   - Premium dark studio container with subtle architectural grid
+   ExpertConsultation.module.css — Chicago HQ & Consultation Form (Dark Style)
+   - Deep obsidian canvas (#070B16) with subtle geometric line art
+   - Radiant high-contrast typography with glowing orange accents (#FF6A3D)
+   - 3 Feature proof items with coral glass icon badges and dividers
+   - Authentic Chicago skyline golden hour advisory pill
+   - Frosted dark consultation form card with trust/NDA credentials
    ========================================================================== */
 
 .section {
-  padding-top: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
-  padding-bottom: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
-  background-color: #0E131F;
-  color: #FFFFFF;
+  padding-top: var(--section-padding-y, clamp(72px, 7vw, 108px));
+  padding-bottom: var(--section-padding-y, clamp(72px, 7vw, 108px));
+  background-color: #070B16;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Background Subtle Geometric Vector Lines */
+.bgLineArt {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Container Grid
+   -------------------------------------------------------------------------- */
 .containerGrid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1.08fr 1fr;
+  gap: clamp(36px, 5.5vw, 68px);
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1040px) {
   .containerGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 }
 
 /* --------------------------------------------------------------------------
-   Left Column: Credentials & Advisory
+   LEFT COLUMN: Credentials & Value Proof
    -------------------------------------------------------------------------- */
 .credentialsCol {
   display: flex;
@@ -40,225 +55,289 @@
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
-  font-weight: 650;
-  color: var(--accent, #D9383A);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.eyebrowDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--accent, #D9383A);
-  box-shadow: 0 0 10px rgba(217, 56, 58, 0.6);
+.eyebrowDash {
+  width: 28px;
+  height: 2.5px;
+  background-color: #FF6A3D;
+  border-radius: 1px;
+  display: inline-block;
+}
+
+.eyebrowText {
+  font-size: 13px;
+  font-weight: 750;
+  color: #FF6A3D;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .mainTitle {
-  font-size: clamp(30px, 3.4vw, 44px);
-  font-weight: 750;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  font-size: clamp(34px, 4.4vw, 54px);
+  font-weight: 800;
   color: #FFFFFF;
-  margin: 0 0 16px 0;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px 0;
+  text-wrap: balance;
 }
 
 .accentText {
-  color: #F87171;
+  color: #FF6A3D;
+  display: inline;
 }
 
 .leadText {
-  font-size: clamp(15px, 1.2vw, 16.5px);
-  line-height: 1.6;
+  font-size: clamp(15.5px, 1.2vw, 17px);
+  line-height: 1.62;
   color: #94A3B8;
-  margin: 0 0 32px 0;
-  max-width: 520px;
+  margin: 0 0 28px 0;
+  max-width: 540px;
 }
 
-.proofGrid {
+/* --------------------------------------------------------------------------
+   3 Proof Value Items
+   -------------------------------------------------------------------------- */
+.proofList {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .proofItem {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.proofIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: rgba(217, 56, 58, 0.12);
-  border: 1px solid rgba(217, 56, 58, 0.25);
-  color: #F87171;
+.proofItem:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.proofIconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: rgba(255, 106, 61, 0.12);
+  border: 1px solid rgba(255, 106, 61, 0.25);
+  color: #FF6A3D;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 250ms ease, background-color 250ms ease;
+}
+
+.proofItem:hover .proofIconBox {
+  transform: scale(1.06);
+  background-color: rgba(255, 106, 61, 0.2);
+}
+
+.proofContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .proofTitle {
-  font-size: 15.5px;
-  font-weight: 650;
-  color: #F1F5F9;
-  margin: 0 0 3px 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.28;
 }
 
 .proofDesc {
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: #94A3B8;
-  line-height: 1.45;
   margin: 0;
 }
 
-/* Direct Advisory Line */
-.directContactBanner {
+/* --------------------------------------------------------------------------
+   Chicago HQ Skyline Bottom Card
+   -------------------------------------------------------------------------- */
+.skylineCard {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 12px 18px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  max-width: 100%;
 }
 
-.contactAvatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #D9383A, #991B1B);
-  color: #FFFFFF;
-  font-weight: 750;
-  font-size: 14px;
+.skylineImageWrapper {
+  width: 140px;
+  height: 78px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skylineImg {
+  object-fit: cover;
+}
+
+.skylineInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.skylineTitleRow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
+}
+
+.pinIcon {
+  color: #FF6A3D;
   flex-shrink: 0;
 }
 
-.contactName {
-  font-size: 13.5px;
-  font-weight: 650;
-  color: #F8FAFC;
-  margin-bottom: 2px;
+.hqName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
-.contactNumbers {
+.advisorLineLabel {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.phoneNumbers {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 13px;
   flex-wrap: wrap;
 }
 
 .phoneLink {
-  font-size: 13px;
-  font-weight: 600;
-  color: #CBD5E1;
+  color: #E2E8F0;
   text-decoration: none;
-  transition: color 160ms ease;
+  font-weight: 600;
+  transition: color 200ms ease;
 }
 
 .phoneLink:hover {
-  color: #F87171;
+  color: #FF6A3D;
 }
 
-.dividerDot {
-  color: #64748B;
-  font-size: 11px;
+.phoneDot {
+  color: #475569;
 }
 
 /* --------------------------------------------------------------------------
-   Right Column: Inquiry Form Card
+   RIGHT COLUMN: Dark Consultation Form Card
    -------------------------------------------------------------------------- */
 .formCol {
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .formCard {
-  width: 100%;
-  max-width: 520px;
-  background-color: #171E2E;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: clamp(24px, 3.5vw, 36px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(160deg, #0D1628 0%, #09101E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: clamp(32px, 3.5vw, 42px);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 106, 61, 0.06);
+  position: relative;
+  overflow: hidden;
 }
 
 .formHeader {
-  margin-bottom: 22px;
+  margin-bottom: 24px;
+}
+
+.formEyebrow {
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38BDF8;
+  margin-bottom: 8px;
 }
 
 .formTitle {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 750;
   color: #FFFFFF;
-  margin: 0 0 6px 0;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px 0;
 }
 
 .formSubtitle {
-  font-size: 13.5px;
+  font-size: 14px;
   color: #94A3B8;
+  line-height: 1.5;
   margin: 0;
 }
 
+/* Form Controls */
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.inputRow {
+.formRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-@media (max-width: 560px) {
-  .inputRow {
+@media (max-width: 600px) {
+  .formRow {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
-.inputGroup {
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 .label {
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: #CBD5E1;
+  color: #E2E8F0;
+}
+
+.requiredMark {
+  color: #FF6A3D;
 }
 
 .input,
 .select,
 .textarea {
-  width: 100%;
-  padding: 10px 14px;
-  background-color: #0F1523;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  color: #F8FAFC;
+  background-color: #060B14;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 11px 14px;
   font-size: 14px;
+  color: #FFFFFF;
   font-family: inherit;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: all 200ms ease;
+  width: 100%;
   outline: none;
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  border-color: var(--accent, #D9383A);
-  box-shadow: 0 0 0 3px rgba(217, 56, 58, 0.2);
+  box-sizing: border-box;
 }
 
 .input::placeholder,
@@ -266,103 +345,181 @@
   color: #64748B;
 }
 
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #FF6A3D;
+  box-shadow: 0 0 0 3px rgba(255, 106, 61, 0.2);
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
 .select option {
-  background-color: #171E2E;
-  color: #F8FAFC;
+  background-color: #0A111E;
+  color: #FFFFFF;
+}
+
+.selectArrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #94A3B8;
 }
 
 .textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 84px;
 }
 
-.submitBtn {
+/* Submit Button */
+.submitButton {
   width: 100%;
-  padding: 13px 20px;
-  border-radius: 8px;
-  background-color: var(--accent, #D9383A);
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #FF6A3D 0%, #E03E1A 100%);
+  border: none;
+  border-radius: 10px;
   color: #FFFFFF;
   font-size: 15px;
-  font-weight: 650;
-  border: none;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 180ms ease, transform 180ms ease;
-  margin-top: 4px;
-}
-
-.submitBtn:hover:not(:disabled) {
-  background-color: #C02628;
-  transform: translateY(-1px);
-}
-
-.submitBtn:disabled {
-  opacity: 0.7;
-  cursor: wait;
-}
-
-.guaranteeText {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  font-size: 11.5px;
-  color: #94A3B8;
+  gap: 8px;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px rgba(255, 106, 61, 0.35);
   margin-top: 4px;
 }
 
-.guaranteeText svg {
-  color: #10B981;
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 106, 61, 0.5);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnArrow {
+  transition: transform 200ms ease;
+}
+
+.submitButton:hover .btnArrow {
+  transform: translateX(4px);
+}
+
+/* Trust & Security Footer Strip */
+.trustFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 14px;
+  color: #94A3B8;
+  font-size: 12px;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trustDivider {
+  width: 1px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Success State */
 .successState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  padding: 24px 12px;
+  padding: 36px 16px;
 }
 
-.successIcon {
-  width: 56px;
-  height: 56px;
+.successIconBox {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #10B981;
+  background-color: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22C55E;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin: 0 auto 18px;
 }
 
-.successState h4 {
-  font-size: 20px;
+.successTitle {
+  font-size: 22px;
   font-weight: 700;
   color: #FFFFFF;
   margin: 0 0 10px 0;
 }
 
-.successState p {
-  font-size: 14px;
+.successDesc {
+  font-size: 14.5px;
+  line-height: 1.6;
   color: #94A3B8;
-  line-height: 1.55;
-  margin: 0 0 20px 0;
+  max-width: 420px;
+  margin: 0 auto 24px;
 }
 
 .resetButton {
-  padding: 8px 18px;
-  border-radius: 6px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #CBD5E1;
-  font-size: 13px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 160ms ease;
+  transition: all 200ms ease;
 }
 
 .resetButton:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layouts
+   -------------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .skylineCard {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .skylineImageWrapper {
+    width: 100%;
+    height: 120px;
+  }
+
+  .formCard {
+    padding: 24px 20px;
+  }
+
+  .trustFooter {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .trustDivider {
+    display: none;
+  }
 }

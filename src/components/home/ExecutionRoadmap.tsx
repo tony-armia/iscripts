@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Container from '../ui/Container';
-import SectionHeading from '../ui/SectionHeading';
 import styles from './ExecutionRoadmap.module.css';
 
 interface Step {
@@ -11,93 +11,81 @@ interface Step {
   title: string;
   summary: string;
   deliverables: string[];
-  icon: React.ReactNode;
+  imageSrc: string;
 }
 
 const STEPS: Step[] = [
   {
     number: '01',
-    phase: 'Discovery',
+    phase: 'DISCOVERY',
     title: 'Concept & Validation',
     summary: 'We stress-test your startup model against real market conditions with rapid interactive prototypes and proof-of-concept architectures.',
-    deliverables: ['Market model validation', 'Rapid prototype wireframing', 'Technology feasibility matrix'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="12" y1="8" x2="12" y2="12" />
-        <line x1="12" y1="16" x2="12.01" y2="16" />
-      </svg>
-    ),
+    deliverables: [
+      'Market model validation',
+      'Rapid prototype wireframing',
+      'Technology feasibility matrix',
+    ],
+    imageSrc: '/images/roadmap/step-01.jpg',
   },
   {
     number: '02',
-    phase: 'Architecture',
+    phase: 'ARCHITECTURE',
     title: 'Technical Analysis',
     summary: 'Our system architects draft detailed Scope of Work (SOW), database relational schemas, API blueprints, and vendor transaction flows.',
-    deliverables: ['Comprehensive SOW & spec', 'Database relational mapping', 'API & payment gateway schema'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
+    deliverables: [
+      'Comprehensive SOW & spec',
+      'Database relational mapping',
+      'API & payment gateway schema',
+    ],
+    imageSrc: '/images/roadmap/step-02.jpg',
   },
   {
     number: '03',
-    phase: 'Design',
+    phase: 'DESIGN',
     title: 'UX/UI Engineering',
     summary: 'Dedicated UX/UI designers craft responsive storefronts, vendor admin consoles, and companion mobile apps aligned with your brand identity.',
-    deliverables: ['High-fidelity design tokens', 'Mobile & web customer journeys', 'Merchant & admin dashboards'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z" />
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-        <path d="M2 2l7.586 7.586" />
-        <circle cx="11" cy="11" r="2" />
-      </svg>
-    ),
+    deliverables: [
+      'High-fidelity design tokens',
+      'Mobile & web customer journeys',
+      'Merchant & admin dashboards',
+    ],
+    imageSrc: '/images/roadmap/step-03.jpg',
   },
   {
     number: '04',
-    phase: 'Engineering',
+    phase: 'ENGINEERING',
     title: 'Custom Development',
     summary: 'Our 150+ in-house Chicago and offshore engineers programmatically extend business logic, escrow payouts, and automated algorithms.',
-    deliverables: ['100% unencrypted code delivery', 'Custom business workflow logic', 'Third-party webhook integrations'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    deliverables: [
+      '100% unencrypted code delivery',
+      'Custom business workflow logic',
+      'Third-party webhook integrations',
+    ],
+    imageSrc: '/images/roadmap/step-04.jpg',
   },
   {
     number: '05',
-    phase: 'Verification',
+    phase: 'VERIFICATION',
     title: 'Rigorous QA Auditing',
     summary: 'Every module undergoes unit testing, integration verification, speed optimization, security vulnerability scans, and concurrency load tests.',
-    deliverables: ['Automated regression tests', 'Security penetration audits', 'Multi-tenant load benchmarks'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
-      </svg>
-    ),
+    deliverables: [
+      'Automated regression tests',
+      'Security penetration audits',
+      'Multi-tenant load benchmarks',
+    ],
+    imageSrc: '/images/roadmap/step-05.jpg',
   },
   {
     number: '06',
-    phase: 'Deployment',
+    phase: 'DEPLOYMENT',
     title: 'Cloud Launch & DevOps',
     summary: 'Free complimentary server setup and cloud deployment onto your AWS, Linux, or preferred hosting with ongoing roadmap support.',
-    deliverables: ['Zero-cost white-glove setup', 'Cloud infrastructure provisioning', '24/7 technical monitoring'],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-      </svg>
-    ),
+    deliverables: [
+      'Zero-cost white-glove setup',
+      'Cloud infrastructure provisioning',
+      '24/7 technical monitoring',
+    ],
+    imageSrc: '/images/roadmap/step-06.jpg',
   },
 ];
 
@@ -105,8 +93,9 @@ export default function ExecutionRoadmap() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <section className={styles.section} id="empowering-startups" aria-label="6-Step Startup Execution Journey">
+    <section className={styles.section} id="execution-roadmap" aria-label="6-Step Startup Execution Roadmap">
       <Container size="default">
+        {/* Section Header */}
         <div className={styles.header}>
           <div className={styles.eyebrow}>
             <span className={styles.eyebrowDash} aria-hidden="true" />
@@ -119,42 +108,103 @@ export default function ExecutionRoadmap() {
           </p>
         </div>
 
-        {/* 6-Phase Interactive Grid */}
-        <div className={styles.stepsGrid}>
-          {STEPS.map((step, idx) => {
-            const isHovered = activeStep === idx;
-            return (
-              <div
-                key={step.number}
-                className={`${styles.stepCard} ${isHovered ? styles.cardActive : ''}`}
-                onMouseEnter={() => setActiveStep(idx)}
-              >
-                <div className={styles.cardHeader}>
-                  <div className={styles.numberBadge}>
-                    <span className={styles.numberText}>{step.number}</span>
-                  </div>
-                  <div className={styles.iconCircle} aria-hidden="true">
-                    {step.icon}
-                  </div>
-                </div>
+        {/* Vertical Timeline Interactive Layout */}
+        <div className={styles.timelineContainer}>
+          {/* Timeline Spine Track */}
+          <div className={styles.spineTrack} aria-hidden="true">
+            <div 
+              className={styles.spineProgress}
+              style={{
+                height: `${((activeStep + 0.6) / STEPS.length) * 100}%`,
+              }}
+            />
+          </div>
 
-                <div className={styles.phaseTag}>{step.phase}</div>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepSummary}>{step.summary}</p>
+          {/* Steps List */}
+          <div className={styles.stepsList} role="list">
+            {STEPS.map((step, idx) => {
+              const isActive = activeStep === idx;
+              const isPast = idx < activeStep;
 
-                <div className={styles.deliverablesList}>
-                  {step.deliverables.map((del) => (
-                    <div key={del} className={styles.deliverableItem}>
-                      <span className={styles.checkDot} aria-hidden="true" />
-                      <span>{del}</span>
+              return (
+                <div
+                  key={step.number}
+                  role="listitem"
+                  className={`${styles.stepRow} ${isActive ? styles.rowActive : ''} ${isPast ? styles.rowPast : ''}`}
+                  onMouseEnter={() => setActiveStep(idx)}
+                >
+                  {/* Left Node Indicator */}
+                  <div className={styles.nodeWrapper}>
+                    <button
+                      type="button"
+                      className={`${styles.nodeCircle} ${isActive ? styles.nodeActive : ''} ${isPast ? styles.nodePast : ''}`}
+                      onClick={() => setActiveStep(idx)}
+                      aria-label={`Jump to Step ${step.number}: ${step.title}`}
+                      aria-current={isActive ? 'step' : undefined}
+                    >
+                      <span className={styles.nodeNumber}>{step.number}</span>
+                    </button>
+                    <div className={`${styles.nodeBridge} ${isActive ? styles.bridgeActive : ''}`} aria-hidden="true" />
+                  </div>
+
+                  {/* Wide Horizontal Step Card */}
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    aria-pressed={isActive}
+                    onClick={() => setActiveStep(idx)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setActiveStep(idx);
+                      }
+                    }}
+                    className={`${styles.card} ${isActive ? styles.cardActive : ''}`}
+                  >
+                    {/* Active Accent Bar on Left Edge */}
+                    <div className={styles.cardAccentBar} aria-hidden="true" />
+
+                    {/* Column 1: Eyebrow + Title + Description */}
+                    <div className={styles.infoCol}>
+                      <span className={styles.phaseBadge}>{step.phase}</span>
+                      <h3 className={styles.stepTitle}>{step.title}</h3>
+                      <p className={styles.stepSummary}>{step.summary}</p>
                     </div>
-                  ))}
-                </div>
 
-                <div className={styles.bottomBar} aria-hidden="true" />
-              </div>
-            );
-          })}
+                    {/* Column 2: Deliverables List */}
+                    <div className={styles.deliverablesCol}>
+                      <ul className={styles.deliverablesList}>
+                        {step.deliverables.map((item, dIdx) => (
+                          <li key={dIdx} className={styles.deliverableItem}>
+                            <span
+                              className={`${styles.bulletDot} ${isActive ? styles.bulletDotActive : styles.bulletDotDefault}`}
+                              aria-hidden="true"
+                            />
+                            <span className={styles.deliverableText}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Column 3: High-Res Visual Preview Thumbnail */}
+                    <div className={styles.thumbnailCol}>
+                      <div className={styles.thumbnailFrame}>
+                        <Image
+                          src={step.imageSrc}
+                          alt={`${step.title} visual preview`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 240px, 260px"
+                          className={styles.thumbnailImage}
+                          priority={idx < 2}
+                        />
+                        <div className={styles.thumbnailGlow} aria-hidden="true" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Container>
     </section>

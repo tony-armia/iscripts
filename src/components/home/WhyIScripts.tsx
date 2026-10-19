@@ -3,171 +3,188 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Container from '../ui/Container';
-import SectionHeading from '../ui/SectionHeading';
-import Button from '../ui/Button';
 import styles from './WhyIScripts.module.css';
 
-interface FeaturePillar {
+interface PillarItem {
   id: string;
   number: string;
   title: string;
-  summary: string;
-  detail: string;
-  badge: string;
+  verticalLine1: string;
+  verticalLine2: string;
+  description: string;
   imageSrc: string;
-  codeSnippet: string;
+  ctaText: string;
+  ctaHref: string;
 }
 
-const PILLARS: FeaturePillar[] = [
+const PILLARS: PillarItem[] = [
   {
-    id: 'turnkey',
+    id: '01',
     number: '01',
     title: 'Ready-made platform foundations',
-    summary: 'Eliminate 12 months of boilerplate infrastructure engineering.',
-    detail:
-      'Rather than building multi-tenant databases, vendor payout engines, role-based permissions, and checkout flows from zero, you begin with proven, operational architecture.',
-    badge: 'Operational Architecture',
-    imageSrc: '/images/home-screen.png',
-    codeSnippet: `// config/platform.php\nreturn [\n  'mode' => 'production',\n  'multitenant' => true,\n  'commission_routing' => 'automated_split',\n  'source_encryption' => false,\n];`,
+    verticalLine1: 'Ready-made',
+    verticalLine2: 'platform foundations',
+    description: 'Start with proven operational architecture instead of building the basics from scratch.',
+    imageSrc: '/images/why-iscripts/pillar-01.jpg',
+    ctaText: 'Explore customization options',
+    ctaHref: 'https://www.iscripts.com/customization.php',
   },
   {
-    id: 'customizable',
+    id: '02',
     number: '02',
     title: 'Customizable business functionality',
-    summary: 'Adapt business logic, workflows, and database schemas to your model.',
-    detail:
-      'Modify commission tiers, order dispatch algorithms, automated notification webhooks, and regional tax calculation rules. Work internally or engage our Chicago engineering team.',
-    badge: 'Custom Workflows',
-    imageSrc: '/images/multicart-back.png',
-    codeSnippet: `// modules/commission/RulesEngine.php\nclass CommissionEngine {\n  public function calculateSplit($vendorId, $orderTotal) {\n    $rate = $this->getVendorTier($vendorId);\n    return $orderTotal * ($rate / 100.0);\n  }\n}`,
+    verticalLine1: 'Customizable',
+    verticalLine2: 'business functionality',
+    description: 'Adapt business logic, workflows, multi-vendor splits, and database schemas to your exact operational model.',
+    imageSrc: '/images/why-iscripts/pillar-02.jpg',
+    ctaText: 'Explore customization options',
+    ctaHref: 'https://www.iscripts.com/customization.php',
   },
   {
-    id: 'whitelabel',
+    id: '03',
     number: '03',
-    title: 'Complete white-label branding',
-    summary: 'Your domain, your brand identity, and your native app store accounts.',
-    detail:
-      'No iScripts branding is displayed to your customers or vendors. Companion iOS and Android applications are published directly under your organization’s developer credentials.',
-    badge: 'White-Label Branding',
-    imageSrc: '/images/uber-back.jpg',
-    codeSnippet: `// branding/theme.json\n{\n  "organization": "Your Brand Name",\n  "custom_domain": "marketplace.yourdomain.com",\n  "app_store_id": "com.yourdomain.app",\n  "watermark_disabled": true\n}`,
+    title: 'White-label branding',
+    verticalLine1: 'White-label',
+    verticalLine2: 'branding',
+    description: 'Deploy under your organization’s domain, visual branding, and native mobile developer accounts without vendor lock-in.',
+    imageSrc: '/images/why-iscripts/pillar-03.jpg',
+    ctaText: 'Explore customization options',
+    ctaHref: 'https://www.iscripts.com/customization.php',
   },
   {
-    id: 'unencrypted',
+    id: '04',
     number: '04',
-    title: '100% unencrypted source code',
-    summary: 'Full codebase control and self-hosted server independence.',
-    detail:
-      'Commercial licenses include readable PHP and MySQL code with zero proprietary binary runtimes. Deploy on AWS, Google Cloud, DigitalOcean, or private Linux servers without lock-in.',
-    badge: 'Open Stack / No Lock-In',
-    imageSrc: '/images/locologic-back.png',
-    codeSnippet: `// infrastructure/deploy.sh\n# Deploy directly to your own infrastructure\nrsync -avz --exclude '.git' ./src/ deploy@aws-instance:/var/www/html/\nphp artisan migrate --force\nsystemctl restart php-fpm nginx`,
+    title: 'Unencrypted source code',
+    verticalLine1: 'Unencrypted',
+    verticalLine2: 'source code',
+    description: 'Receive full readable PHP and MySQL source code with zero proprietary runtimes for perpetual ownership.',
+    imageSrc: '/images/why-iscripts/pillar-04.jpg',
+    ctaText: 'Explore customization options',
+    ctaHref: 'https://www.iscripts.com/customization.php',
   },
 ];
 
 export default function WhyIScripts() {
-  const [activePillarId, setActivePillarId] = useState<string>(PILLARS[0].id);
-
-  const activePillar =
-    PILLARS.find((p) => p.id === activePillarId) || PILLARS[0];
+  const [activeId, setActiveId] = useState<string>('01');
 
   return (
     <section className={styles.section} id="made-to-become-yours">
       <Container size="default">
-        <SectionHeading
-          label="Architectural foundation"
-          title="A working foundation. Room to make it yours."
-          description="Why founders and organizations build on iScripts instead of commissioning custom software from scratch."
-        />
-
-        <div className={styles.interactiveGrid}>
-          {/* Left Column: Interactive Feature Rail */}
-          <div className={styles.featureRail} role="tablist" aria-label="Why build with iScripts">
-            {PILLARS.map((pillar) => {
-              const isActive = pillar.id === activePillarId;
-              return (
-                <button
-                  key={pillar.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-controls={`feature-panel-${pillar.id}`}
-                  className={`${styles.railItem} ${isActive ? styles.railItemActive : ''}`}
-                  onClick={() => setActivePillarId(pillar.id)}
-                >
-                  <div className={styles.railTop}>
-                    <span className={styles.railNumber}>{pillar.number}</span>
-                    <h3 className={styles.railTitle}>{pillar.title}</h3>
-                  </div>
-                  <p className={styles.railSummary}>{pillar.summary}</p>
-                  {isActive && (
-                    <p className={styles.railDetail}>{pillar.detail}</p>
-                  )}
-                  <div className={styles.railIndicator} />
-                </button>
-              );
-            })}
+        {/* Section Header */}
+        <div className={styles.header}>
+          <div className={styles.eyebrow}>
+            <span className={styles.eyebrowDash} aria-hidden="true" />
+            <span className={styles.eyebrowText}>Why choose iScripts</span>
           </div>
+          <h2 className={styles.title}>A foundation you can make your own.</h2>
+          <p className={styles.description}>
+            Why founders and organizations build on iScripts instead of commissioning custom software from scratch.
+          </p>
+        </div>
 
-          {/* Right Column: Dynamic Supporting Interface & Code Preview */}
-          <div
-            id={`feature-panel-${activePillar.id}`}
-            role="tabpanel"
-            className={styles.stageFrame}
-          >
-            <div className={styles.stageChrome}>
-              <div className={styles.chromeDots} aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className={styles.chromeAddress}>
-                iscripts-core/{activePillar.id}.architecture
-              </div>
-              <div className={styles.chromeBadge}>{activePillar.badge}</div>
-            </div>
-
-            <div className={styles.stageContent}>
-              {/* Product UI Visual */}
-              <div className={styles.visualContainer}>
-                <Image
-                  key={activePillar.id}
-                  src={activePillar.imageSrc}
-                  alt={activePillar.title}
-                  width={680}
-                  height={380}
-                  className={styles.stageImage}
-                  quality={90}
-                />
-              </div>
-
-              {/* Architectural Code / Schema Inspect */}
-              <div className={styles.codeBlock}>
-                <div className={styles.codeHeader}>
-                  <span>Source Verification &bull; Unencrypted PHP / Shell</span>
-                  <span className={styles.codeStatus}>Verified</span>
-                </div>
-                <pre className={styles.codePre}>
-                  <code>{activePillar.codeSnippet}</code>
-                </pre>
-              </div>
-            </div>
-
-            <div className={styles.stageFooter}>
-              <div className={styles.footerNote}>
-                <strong>Standard LAMP Stack:</strong> PHP 8+, MySQL 8/MariaDB, Nginx/Apache. Fully self-hosted with complete database ownership.
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                withArrow
-                href="https://www.iscripts.com/customization.php"
-                isExternal
+        {/* Interactive Expandable Cards Row */}
+        <div
+          className={styles.cardsRow}
+          role="tablist"
+          aria-label="Why choose iScripts architectural pillars"
+        >
+          {PILLARS.map((pillar) => {
+            const isActive = pillar.id === activeId;
+            return (
+              <div
+                key={pillar.id}
+                role="tab"
+                tabIndex={0}
+                aria-selected={isActive}
+                aria-label={pillar.title}
+                className={`${styles.card} ${isActive ? styles.cardActive : styles.cardCollapsed}`}
+                onClick={() => setActiveId(pillar.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveId(pillar.id);
+                  }
+                }}
               >
-                Customization Options
-              </Button>
-            </div>
-          </div>
+                {/* Background Image Container */}
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={pillar.imageSrc}
+                    alt={pillar.title}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 60vw"
+                    className={styles.bgImage}
+                    priority={pillar.id === '01'}
+                  />
+                  <div
+                    className={`${styles.gradientOverlay} ${
+                      isActive ? styles.gradientOverlayActive : styles.gradientOverlayCollapsed
+                    }`}
+                  />
+                </div>
+
+                {/* Collapsed Card Presentation */}
+                {!isActive && (
+                  <div className={styles.collapsedContent}>
+                    {/* Vertical rotated title track for desktop */}
+                    <div className={styles.verticalTitleTrack} aria-hidden="true">
+                      <div className={styles.verticalTitleWrapper}>
+                        <span className={styles.verticalLine}>{pillar.verticalLine1}</span>
+                        <span className={styles.verticalLine}>{pillar.verticalLine2}</span>
+                      </div>
+                    </div>
+
+                    {/* Horizontal title bar for mobile */}
+                    <div className={styles.mobileCollapsedBar}>
+                      <span className={styles.mobileNumber}>{pillar.number}</span>
+                      <span className={styles.mobileTitleText}>{pillar.title}</span>
+                    </div>
+
+                    {/* Bottom controls bar (desktop) */}
+                    <div className={styles.collapsedBottomBar}>
+                      <span className={styles.collapsedNumber}>{pillar.number}</span>
+                      <div className={styles.plusButton} aria-hidden="true">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 2.5V13.5M2.5 8H13.5"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Active / Expanded Card Presentation */}
+                {isActive && (
+                  <div className={styles.activeContent}>
+                    <span className={styles.activeNumber}>{pillar.number}</span>
+                    <h3 className={styles.activeTitle}>{pillar.title}</h3>
+                    <p className={styles.activeDescription}>{pillar.description}</p>
+                    <a
+                      href={pillar.ctaHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.ctaLink}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className={styles.ctaText}>{pillar.ctaText}</span>
+                      <span className={styles.ctaArrow}>→</span>
+                      <span className={styles.ctaLine} />
+                    </a>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </Container>
     </section>

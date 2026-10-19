@@ -1,15 +1,15 @@
 .footer {
   background-color: #FFFFFF;
   border-top: 1px solid var(--border-color);
-  padding-top: 80px;
-  padding-bottom: 48px;
+  padding-top: clamp(56px, 6vw, 76px);
+  padding-bottom: clamp(36px, 4vw, 48px);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
-  gap: 48px;
-  margin-bottom: 64px;
+  gap: 40px;
+  margin-bottom: clamp(36px, 4vw, 52px);
 }
 
 @media (max-width: 1100px) {

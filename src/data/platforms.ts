@@ -2,7 +2,8 @@ export interface Platform {
   id: string;
   name: string;
   tagline: string;
-  category: string;
+  category: "Marketplaces" | "On-Demand" | "Ecommerce" | "Logistics" | "Social";
+  categoryLabel: string;
   shortDescription: string;
   fullDescription: string;
   image: string;
@@ -11,15 +12,16 @@ export interface Platform {
   demoUrl: string;
   highlights: string[];
   metrics?: { label: string; value: string }[];
-  featuredLayout: "primary" | "secondary" | "split";
+  featuredLayout?: "primary" | "secondary" | "split";
 }
 
 export const FEATURED_PLATFORMS: Platform[] = [
   {
     id: "multicart",
     name: "iScripts MultiCart",
-    tagline: "Multi-vendor shopping cart & marketplace software",
-    category: "Ecommerce & Marketplaces",
+    tagline: "Multi-Vendor Shopping Cart & Marketplace Platform",
+    category: "Marketplaces",
+    categoryLabel: "Marketplaces",
     shortDescription:
       "A complete multi-vendor ecommerce platform allowing multiple sellers to create storefronts, manage catalogs, and process orders under one unified marketplace.",
     fullDescription:
@@ -32,10 +34,10 @@ export const FEATURED_PLATFORMS: Platform[] = [
       "Individual vendor storefronts with independent catalogs",
       "Automated split payments and flexible commission tiers",
       "Unified customer cart with single multi-vendor checkout",
-      "Companion native iOS and Android customer and vendor apps",
+      "Companion native iOS and Android apps for buyers and sellers",
     ],
     metrics: [
-      { label: "Deployment Type", value: "Self-Hosted / Cloud" },
+      { label: "Architecture", value: "PHP & MySQL" },
       { label: "Source Access", value: "100% Unencrypted" },
       { label: "Mobile Apps", value: "iOS & Android" },
     ],
@@ -44,8 +46,9 @@ export const FEATURED_PLATFORMS: Platform[] = [
   {
     id: "uberforx",
     name: "iScripts UberforX",
-    tagline: "On-demand dispatch & service booking platform",
-    category: "On-Demand Services",
+    tagline: "On-Demand Services & Geolocation Dispatch Marketplace",
+    category: "On-Demand",
+    categoryLabel: "On-Demand",
     shortDescription:
       "Real-time dispatch and scheduling software for service businesses, home maintenance, roadside assistance, healthcare visits, or courier operations.",
     fullDescription:
@@ -69,8 +72,9 @@ export const FEATURED_PLATFORMS: Platform[] = [
   {
     id: "netmenus",
     name: "iScripts NetMenus",
-    tagline: "Multi-restaurant ordering & menu management",
-    category: "Food & Restaurant",
+    tagline: "Restaurant Menu Management & Multi-Eatery Ordering",
+    category: "On-Demand",
+    categoryLabel: "Food & Restaurant",
     shortDescription:
       "A city or regional food portal enabling restaurants to list menus, accept takeout and delivery orders, manage table reservations, and coordinate drivers.",
     fullDescription:
@@ -94,8 +98,9 @@ export const FEATURED_PLATFORMS: Platform[] = [
   {
     id: "locologic",
     name: "iScripts Locologic",
-    tagline: "3PL delivery & last-mile logistics management",
-    category: "Logistics & Delivery",
+    tagline: "3PL Delivery & Last-Mile Logistics Management System",
+    category: "Logistics",
+    categoryLabel: "Logistics",
     shortDescription:
       "Dispatch console and mobile driver toolkit engineered for 3PL providers, courier companies, and last-mile distribution centers.",
     fullDescription:
@@ -116,70 +121,134 @@ export const FEATURED_PLATFORMS: Platform[] = [
     ],
     featuredLayout: "split",
   },
-];
-
-export interface BusinessModel {
-  id: string;
-  title: string;
-  description: string;
-  suggestedPlatform: string;
-  platformLink: string;
-  iconType: "marketplace" | "dispatch" | "food" | "logistics" | "store" | "barter";
-}
-
-export const BUSINESS_MODELS: BusinessModel[] = [
   {
-    id: "marketplace",
-    title: "Launch a multi-vendor marketplace",
-    description:
-      "Enable independent vendors to sell their physical or digital catalog with automated commission splits, seller dashboards, and single-cart checkout.",
-    suggestedPlatform: "iScripts MultiCart",
-    platformLink: "https://www.iscripts.com/multicart/",
-    iconType: "marketplace",
+    id: "eswap",
+    name: "iScripts eSwap",
+    tagline: "Peer-to-Peer Barter Exchange & Swap Community Platform",
+    category: "Marketplaces",
+    categoryLabel: "Barter & Trade",
+    shortDescription:
+      "A feature-rich trading network where users swap, barter, or buy items with integrated escrow, valuation points, and escrow protections.",
+    fullDescription:
+      "eSwap powers collaborative consumption marketplaces. Users can negotiate item trades, balance trade differentials with cash or platform reward points, and rate trading partners through community reputation scores.",
+    image: "/images/banner_eswap.webp",
+    altText: "iScripts eSwap barter exchange platform",
+    productUrl: "https://www.iscripts.com/eswap/",
+    demoUrl: "https://www.iscripts.com/eswap/demo.php",
+    highlights: [
+      "Multi-item barter proposals with cash-difference balances",
+      "Optional points and virtual currency accounting system",
+      "Built-in escrow workflow for verified goods exchange",
+      "Member dispute mediation and feedback rating system",
+    ],
+    metrics: [
+      { label: "Transaction Mode", value: "Barter / Cash / Points" },
+      { label: "Security", value: "Escrow Protection" },
+    ],
+    featuredLayout: "secondary",
   },
   {
-    id: "on-demand",
-    title: "Build an on-demand service business",
-    description:
-      "Deploy instant and scheduled dispatch for contractors, home services, healthcare, rides, or mobile technicians with real-time GPS tracking.",
-    suggestedPlatform: "iScripts UberforX",
-    platformLink: "https://www.iscripts.com/uberforx/",
-    iconType: "dispatch",
+    id: "printlogic",
+    name: "iScripts PrintLogic",
+    tagline: "Online Web-to-Print & Custom Design Merchandise Platform",
+    category: "Ecommerce",
+    categoryLabel: "Web-to-Print",
+    shortDescription:
+      "Web-to-print solution featuring an interactive HTML5 design studio for business cards, apparel, banners, and promotional merchandise.",
+    fullDescription:
+      "Empower customers to design customized print products directly in their browser. PrintLogic automates prepress PDF rendering, CMYK color profiles, bleed line validation, and print vendor routing.",
+    image: "/images/printlogic-back.png",
+    altText: "iScripts PrintLogic web-to-print software",
+    productUrl: "https://www.iscripts.com/printlogic/",
+    demoUrl: "https://www.iscripts.com/printlogic/demo.php",
+    highlights: [
+      "Interactive HTML5 vector canvas with clipart & typography",
+      "Print-ready high-resolution PDF generation with bleed margins",
+      "Automated pricing matrix based on paper stock, quantity, and finish",
+      "Multi-printer routing and supplier job ticketing",
+    ],
+    metrics: [
+      { label: "Design Canvas", value: "HTML5 Vector Studio" },
+      { label: "Output", value: "Print-Ready Vector PDF" },
+    ],
+    featuredLayout: "secondary",
   },
   {
-    id: "restaurant",
-    title: "Start an online restaurant network",
-    description:
-      "Aggregate local eateries with online ordering, kitchen management, takeout, delivery routing, and dining reservation workflows.",
-    suggestedPlatform: "iScripts NetMenus",
-    platformLink: "https://www.iscripts.com/netmenus/",
-    iconType: "food",
+    id: "gostores",
+    name: "iScripts GoStores",
+    tagline: "Multi-Tenant Hosted Store Builder & SaaS Ecommerce Engine",
+    category: "Ecommerce",
+    categoryLabel: "Store Builder SaaS",
+    shortDescription:
+      "Launch your own Shopify-like hosted ecommerce platform, allowing SMBs to subscribe, select themes, and launch online stores.",
+    fullDescription:
+      "GoStores enables entrepreneurs to become SaaS ecommerce providers. Platform tenants get isolated storefronts, custom domain mapping, product catalog controls, and integrated payment gateways while you collect recurring subscription revenue.",
+    image: "/images/webtoolkit1.webp",
+    altText: "iScripts GoStores hosted ecommerce platform builder",
+    productUrl: "https://www.iscripts.com/gostores/",
+    demoUrl: "https://www.iscripts.com/gostores/demo.php",
+    highlights: [
+      "Multi-tenant architecture with automated subdomain provisioning",
+      "Subscription billing management with recurring recurring plans",
+      "Theme customization engine and mobile-responsive templates",
+      "Central super-admin dashboard for tenant management and analytics",
+    ],
+    metrics: [
+      { label: "Business Model", value: "Recurring SaaS Billing" },
+      { label: "Tenancy", value: "Isolated Merchant Stores" },
+    ],
+    featuredLayout: "secondary",
   },
   {
-    id: "logistics",
-    title: "Manage 3PL & courier deliveries",
-    description:
-      "Equip your delivery fleet with automated dispatch, multi-stop route sequencing, driver mobile apps, and recipient tracking links.",
-    suggestedPlatform: "iScripts Locologic",
-    platformLink: "https://www.iscripts.com/locologic/",
-    iconType: "logistics",
+    id: "socialware",
+    name: "iScripts SocialWare",
+    tagline: "Community Network & Private Social Engagement Platform",
+    category: "Social",
+    categoryLabel: "Social Network",
+    shortDescription:
+      "Enterprise social networking software for alumni networks, professional associations, niche hobbyist groups, and creator communities.",
+    fullDescription:
+      "Build a branded social ecosystem free from third-party algorithm restrictions. Features activity feeds, user groups, private messaging, media sharing, event calendars, and community monetization tools.",
+    image: "/images/home-screen.png",
+    altText: "iScripts SocialWare community software platform",
+    productUrl: "https://www.iscripts.com/socialware/",
+    demoUrl: "https://www.iscripts.com/socialware/demo.php",
+    highlights: [
+      "Dynamic activity feed with rich media posts, likes, and comments",
+      "Public and private interest-based groups with moderator tools",
+      "Real-time instant chat and direct messaging channels",
+      "Monetization through paid memberships and sponsored placements",
+    ],
+    metrics: [
+      { label: "Community", value: "Feeds, Groups, Messaging" },
+      { label: "Ownership", value: "100% Private Data" },
+    ],
+    featuredLayout: "secondary",
   },
   {
-    id: "store-builder",
-    title: "Create a multi-tenant store builder",
-    description:
-      "Provide SMBs with branded ecommerce stores on subdomains, recurring subscription plans, and central administrative controls.",
-    suggestedPlatform: "iScripts GoStores",
-    platformLink: "https://www.iscripts.com/gostores/",
-    iconType: "store",
-  },
-  {
-    id: "barter",
-    title: "Operate a barter & swap exchange",
-    description:
-      "Launch a trading community where members swap goods, services, or trade items directly using flexible escrow and points systems.",
-    suggestedPlatform: "iScripts eSwap",
-    platformLink: "https://www.iscripts.com/eswap/",
-    iconType: "barter",
+    id: "multicart-enterprise",
+    name: "iScripts MultiCart Enterprise",
+    tagline: "High-Volume B2B & Wholesale Multi-Vendor Commerce Engine",
+    category: "Marketplaces",
+    categoryLabel: "Enterprise B2B",
+    shortDescription:
+      "Enterprise edition of MultiCart built for wholesale distributors, B2B procurement networks, and multi-warehouse supply chains.",
+    fullDescription:
+      "Engineered for high-volume corporate transactions with tiered wholesale pricing, purchase order approvals, credit limit terms, and multi-warehouse distribution routing across nationwide vendor networks.",
+    image: "/images/multicart_bnr.webp",
+    altText: "iScripts MultiCart Enterprise B2B wholesale platform",
+    productUrl: "https://www.iscripts.com/multicart-enterprise/",
+    demoUrl: "https://www.iscripts.com/multicart/demo.php",
+    highlights: [
+      "B2B quote requests, custom price tiers, and bulk order discounts",
+      "Purchase order (PO) workflows and net payment terms",
+      "Multi-warehouse inventory routing and split shipment fulfillment",
+      "ERP and accounting integration hooks for automated reconciliation",
+    ],
+    metrics: [
+      { label: "Scale", value: "High-Volume B2B" },
+      { label: "Workflows", value: "Quotes & Net Terms" },
+    ],
+    featuredLayout: "secondary",
   },
 ];

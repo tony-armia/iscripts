@@ -98,6 +98,8 @@ export default function WhyIScripts() {
                 aria-selected={isActive}
                 aria-label={pillar.title}
                 className={`${styles.card} ${isActive ? styles.cardActive : styles.cardCollapsed}`}
+                onMouseEnter={() => setActiveId(pillar.id)}
+                onFocus={() => setActiveId(pillar.id)}
                 onClick={() => setActiveId(pillar.id)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -116,72 +118,66 @@ export default function WhyIScripts() {
                     className={styles.bgImage}
                     priority={pillar.id === '01'}
                   />
-                  <div
-                    className={`${styles.gradientOverlay} ${
-                      isActive ? styles.gradientOverlayActive : styles.gradientOverlayCollapsed
-                    }`}
-                  />
+                  <div className={styles.gradientOverlayCollapsed} aria-hidden="true" />
+                  <div className={styles.gradientOverlayActive} aria-hidden="true" />
                 </div>
 
-                {/* Collapsed Card Presentation */}
-                {!isActive && (
-                  <div className={styles.collapsedContent}>
-                    {/* Vertical rotated title track for desktop */}
-                    <div className={styles.verticalTitleTrack} aria-hidden="true">
-                      <div className={styles.verticalTitleWrapper}>
-                        <span className={styles.verticalLine}>{pillar.verticalLine1}</span>
-                        <span className={styles.verticalLine}>{pillar.verticalLine2}</span>
-                      </div>
-                    </div>
-
-                    {/* Horizontal title bar for mobile */}
-                    <div className={styles.mobileCollapsedBar}>
-                      <span className={styles.mobileNumber}>{pillar.number}</span>
-                      <span className={styles.mobileTitleText}>{pillar.title}</span>
-                    </div>
-
-                    {/* Bottom controls bar (desktop) */}
-                    <div className={styles.collapsedBottomBar}>
-                      <span className={styles.collapsedNumber}>{pillar.number}</span>
-                      <div className={styles.plusButton} aria-hidden="true">
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M8 2.5V13.5M2.5 8H13.5"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </div>
+                {/* Collapsed Card Presentation (smooth crossfade) */}
+                <div className={styles.collapsedContent} aria-hidden={isActive}>
+                  {/* Vertical rotated title track for desktop */}
+                  <div className={styles.verticalTitleTrack} aria-hidden="true">
+                    <div className={styles.verticalTitleWrapper}>
+                      <span className={styles.verticalLine}>{pillar.verticalLine1}</span>
+                      <span className={styles.verticalLine}>{pillar.verticalLine2}</span>
                     </div>
                   </div>
-                )}
 
-                {/* Active / Expanded Card Presentation */}
-                {isActive && (
-                  <div className={styles.activeContent}>
-                    <span className={styles.activeNumber}>{pillar.number}</span>
-                    <h3 className={styles.activeTitle}>{pillar.title}</h3>
-                    <p className={styles.activeDescription}>{pillar.description}</p>
-                    <a
-                      href={pillar.ctaHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.ctaLink}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span className={styles.ctaText}>{pillar.ctaText}</span>
-                      <span className={styles.ctaArrow}>→</span>
-                      <span className={styles.ctaLine} />
-                    </a>
+                  {/* Horizontal title bar for mobile */}
+                  <div className={styles.mobileCollapsedBar}>
+                    <span className={styles.mobileNumber}>{pillar.number}</span>
+                    <span className={styles.mobileTitleText}>{pillar.title}</span>
                   </div>
-                )}
+
+                  {/* Bottom controls bar (desktop) */}
+                  <div className={styles.collapsedBottomBar}>
+                    <span className={styles.collapsedNumber}>{pillar.number}</span>
+                    <div className={styles.plusButton} aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8 2.5V13.5M2.5 8H13.5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Active / Expanded Card Presentation (smooth crossfade) */}
+                <div className={styles.activeContent} aria-hidden={!isActive}>
+                  <span className={styles.activeNumber}>{pillar.number}</span>
+                  <h3 className={styles.activeTitle}>{pillar.title}</h3>
+                  <p className={styles.activeDescription}>{pillar.description}</p>
+                  <a
+                    href={pillar.ctaHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaLink}
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span className={styles.ctaText}>{pillar.ctaText}</span>
+                    <span className={styles.ctaArrow}>→</span>
+                    <span className={styles.ctaLine} />
+                  </a>
+                </div>
               </div>
             );
           })}

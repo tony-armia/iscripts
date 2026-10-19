@@ -1,39 +1,91 @@
+/* ==========================================================================
+   FeaturedPlatforms.module.css — Turnkey Technology Platforms Directory
+   - High-contrast category filter pills
+   - Prominent flagship showcase card
+   - High-density multi-column platform catalog grid
+   - Cohesive container and section padding standards
+   ========================================================================== */
+
 .section {
-  padding-top: clamp(80px, 9vw, 128px);
-  padding-bottom: clamp(80px, 9vw, 128px);
-  background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  padding-top: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
+  padding-bottom: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
+  background-color: #FAFAF8;
+  border-bottom: 1px solid var(--border-color, #E3E5E0);
 }
 
-.editorialGrid {
+/* --------------------------------------------------------------------------
+   Category Filter Bar
+   -------------------------------------------------------------------------- */
+.filterBar {
   display: flex;
-  flex-direction: column;
-  gap: 36px;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  margin-bottom: 36px;
 }
 
-/* Card 1: Wide Prominent Showcase */
+.filterPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 180ms ease;
+  user-select: none;
+}
+
+.filterPill:hover {
+  border-color: #9CA3AF;
+  color: #111827;
+  background-color: #F9FAFB;
+}
+
+.filterPillActive {
+  background-color: #111827;
+  border-color: #111827;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.filterPillActive:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   Flagship Hero Showcase Card
+   -------------------------------------------------------------------------- */
 .heroCard {
   background-color: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md, 8px);
-  padding: clamp(32px, 4vw, 48px);
+  border: 1px solid var(--border-color, #E3E5E0);
+  border-radius: 12px;
+  padding: clamp(28px, 3.5vw, 44px);
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
   align-items: center;
-  transition: border-color var(--transition-normal, 220ms), box-shadow var(--transition-normal, 220ms);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  margin-bottom: 40px;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 
 .heroCard:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(217, 56, 58, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 960px) {
   .heroCard {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 28px;
+    gap: 28px;
+    padding: 24px;
   }
 }
 
@@ -46,52 +98,52 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .categoryBadge {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 650;
+  color: var(--accent, #D9383A);
   letter-spacing: 0.02em;
 }
 
 .techTag {
-  font-size: 15px;
-  color: var(--text-muted);
-  font-family: monospace;
-  background-color: var(--bg-secondary);
+  font-size: 12.5px;
+  color: #4B5563;
+  background-color: #F3F4F6;
   padding: 3px 10px;
   border-radius: 4px;
+  font-weight: 500;
 }
 
 .cardTitle {
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 580;
-  color: var(--text-primary);
-  margin-bottom: 6px;
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
   letter-spacing: -0.02em;
 }
 
 .cardTagline {
   font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
+  font-weight: 550;
+  color: #4B5563;
+  margin: 0 0 14px 0;
 }
 
 .cardDesc {
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
+  color: #4B5563;
+  margin: 0 0 20px 0;
 }
 
 .highlightsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: 10px 16px;
+  margin-bottom: 26px;
 }
 
 @media (max-width: 600px) {
@@ -104,13 +156,13 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 15px;
-  color: var(--text-primary);
-  line-height: 1.5;
+  font-size: 13.5px;
+  color: #1F2937;
+  line-height: 1.45;
 }
 
 .checkIcon {
-  color: var(--accent);
+  color: var(--accent, #D9383A);
   margin-top: 2px;
   flex-shrink: 0;
 }
@@ -122,172 +174,222 @@
   flex-wrap: wrap;
 }
 
-/* Mockup Shells */
-.mockupShell {
-  background-color: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm, 6px);
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-.shellHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  background-color: #F8F9F7;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.shellDots {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.shellDots span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #D3D6CF;
-}
-
-.shellAddress {
-  font-size: 15px;
-  color: var(--text-muted);
-  font-family: monospace;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.shellScreen {
-  background-color: #F3F4F1;
+.heroCardVisual {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.productImage {
+.visualFrame {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deviceMockup {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
 }
 
-/* Dual Row (UberforX and NetMenus) */
-.dualRow {
+/* --------------------------------------------------------------------------
+   High-Density Multi-Column Catalog Grid
+   -------------------------------------------------------------------------- */
+.catalogGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 44px;
 }
 
-@media (max-width: 900px) {
-  .dualRow {
+@media (max-width: 1024px) {
+  .catalogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .catalogGrid {
     grid-template-columns: 1fr;
   }
 }
 
-.supportingCard {
+.catalogCard {
   background-color: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md, 8px);
-  overflow: hidden;
+  border: 1px solid var(--border-color, #E3E5E0);
+  border-radius: 10px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--transition-normal, 220ms), box-shadow var(--transition-normal, 220ms);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 
-.supportingCard:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
+.catalogCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(217, 56, 58, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
 
-.cardVisualCompact {
-  padding: 24px 24px 0;
-  background-color: #F8F9F7;
+.catalogCardHeader {
+  margin-bottom: 12px;
 }
 
-.supportingCardBody {
-  padding: 28px;
+.cardMeta {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.catalogBadge {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--accent, #D9383A);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.catalogTech {
+  font-size: 11.5px;
+  color: #6B7280;
+  background-color: #F3F4F6;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.catalogTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.catalogTagline {
+  font-size: 13px;
+  font-weight: 550;
+  color: #4B5563;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.catalogShortDesc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #6B7280;
+  margin: 0 0 16px 0;
   flex: 1;
 }
 
-.featureList {
+.catalogHighlights {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 16px 0 24px;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  border-top: 1px dashed #E5E7EB;
 }
 
-.featureLine {
+.catalogHighlightItem {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
-  font-size: 15px;
-  color: var(--text-primary);
+  font-size: 12.5px;
+  color: #374151;
+  line-height: 1.4;
 }
 
-.dotBullet {
-  width: 4px;
-  height: 4px;
+.bulletDot {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background-color: var(--accent);
+  background-color: var(--accent, #D9383A);
   flex-shrink: 0;
+  transform: translateY(-2px);
 }
 
-.compactActions {
+.catalogActions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #F3F4F6;
   margin-top: auto;
-  flex-wrap: wrap;
 }
 
-/* Card 4: Differentiated Horizontal Split (Locologic) */
-.splitCard {
-  background-color: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md, 8px);
-  padding: clamp(32px, 4vw, 44px);
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 48px;
+.detailsLink {
+  display: inline-flex;
   align-items: center;
-  transition: border-color var(--transition-normal, 220ms), box-shadow var(--transition-normal, 220ms);
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 650;
+  color: #111827;
+  text-decoration: none;
+  transition: color 160ms ease, gap 160ms ease;
 }
 
-.splitCard:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
+.detailsLink:hover {
+  color: var(--accent, #D9383A);
+  gap: 8px;
 }
 
-@media (max-width: 960px) {
-  .splitCard {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 28px;
-  }
+.demoLink {
+  font-size: 13px;
+  font-weight: 550;
+  color: #6B7280;
+  text-decoration: none;
+  transition: color 160ms ease;
 }
 
-.splitContent {
+.demoLink:hover {
+  color: var(--accent, #D9383A);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Banner Callout
+   -------------------------------------------------------------------------- */
+.bottomBanner {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color, #E3E5E0);
+  border-radius: 10px;
+  padding: 24px 32px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.highlightsGridCompact {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-
-@media (max-width: 600px) {
-  .highlightsGridCompact {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  .bottomBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
   }
+}
+
+.bannerText h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.bannerText p {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.bannerActions {
+  flex-shrink: 0;
 }

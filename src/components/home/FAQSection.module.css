@@ -1,6 +1,6 @@
 .section {
-  padding-top: clamp(80px, 8vw, 112px);
-  padding-bottom: clamp(80px, 8vw, 112px);
+  padding-top: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
+  padding-bottom: var(--section-padding-y, clamp(64px, 6.5vw, 88px));
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
 }

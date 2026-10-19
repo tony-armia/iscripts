@@ -149,40 +149,6 @@ export default function HeroSlideContent({
           </svg>
         </button>
       </div>
-
-      {/* 3 Grounded Feature Highlights with Vertical Dividers */}
-      <div className={styles.featuresRow}>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={currentSlide.id}
-            className={styles.featuresTrack}
-            initial={
-              prefersReducedMotion ? { opacity: 0 } : { y: 12, opacity: 0 }
-            }
-            animate={{ y: 0, opacity: 1 }}
-            exit={
-              prefersReducedMotion ? { opacity: 0 } : { y: -10, opacity: 0 }
-            }
-            transition={{
-              duration: prefersReducedMotion ? 0.05 : 0.5,
-              delay: prefersReducedMotion ? 0 : 0.12,
-              ease: TRANSITION_EASE,
-            }}
-          >
-            {currentSlide.features.map((feat, idx) => (
-              <div
-                key={feat.title}
-                className={`${styles.featureItem} ${
-                  idx > 0 ? styles.featureItemBorder : ''
-                }`}
-              >
-                <div className={styles.featureTitle}>{feat.title}</div>
-                <div className={styles.featureSubtitle}>{feat.subtitle}</div>
-              </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
     </div>
   );
 }

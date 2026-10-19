@@ -48,10 +48,11 @@
   --shadow-stage: 0 24px 64px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-dropdown: 0 12px 32px rgba(0, 0, 0, 0.08);
 
-  /* Layout Containers */
-  --container-max: 1280px;
+  /* Layout Containers & Spacing */
+  --container-max: 1240px;
   --container-narrow: 840px;
-  --container-gutter: 24px;
+  --container-gutter: clamp(20px, 3.5vw, 36px);
+  --section-padding-y: clamp(64px, 6.5vw, 88px);
 
   /* Transitions */
   --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);

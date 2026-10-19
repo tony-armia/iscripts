@@ -1,5 +1,5 @@
 .wrapper {
-  margin-bottom: 56px;
+  margin-bottom: clamp(28px, 3.5vw, 42px);
   display: flex;
   flex-direction: column;
   gap: 20px;

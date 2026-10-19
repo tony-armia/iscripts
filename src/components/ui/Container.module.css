@@ -2,8 +2,8 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--container-gutter, 24px);
-  padding-right: var(--container-gutter, 24px);
+  padding-left: var(--container-gutter, clamp(20px, 3.5vw, 36px));
+  padding-right: var(--container-gutter, clamp(20px, 3.5vw, 36px));
 }
 
 .default {
@@ -15,12 +15,12 @@
 }
 
 .wide {
-  max-width: 1380px;
+  max-width: var(--container-max, 1240px);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }

@@ -203,7 +203,7 @@ export default function HeroSlider({ onOpenContact }: HeroSliderProps) {
       {/* Subtle Engineering Blueprint Grid */}
       <div className={styles.gridBackground} aria-hidden="true" />
 
-      <Container size="wide">
+      <Container size="default">
         {/* Main 2-Column Asymmetric Grid */}
         <div className={styles.heroAsymmetricGrid}>
           {/* Left Column: Counter, Two-Tone Headline, Description, Actions & 3 Features */}
